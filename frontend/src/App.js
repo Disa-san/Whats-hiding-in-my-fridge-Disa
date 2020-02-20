@@ -1,10 +1,12 @@
 import React from 'react'
 import { NewUser } from './components/Form1'
+import { LoginUser } from './components/Login'
 
 export const App = () => {
   return (
     <div>
       <NewUser />
+      <LoginUser />
     </div>
   )
 }

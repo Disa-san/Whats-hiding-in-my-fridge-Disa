@@ -15,11 +15,11 @@ export const NewUser = props => {
       headers: { "Content-Type": "application/json" }
     })
       .then(res => res.json())
-      // setName("")
-      // setPassword("")
-      // setEmail("")
-
-
+      // .then(() => {
+      //   setName("")
+      //   setEmail("")
+      //   setPassword("")
+      // })
       .then(json => console.log(json))
       .catch(err => console.log("error:", err))
   }
