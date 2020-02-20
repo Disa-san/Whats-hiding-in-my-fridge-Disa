@@ -88,7 +88,7 @@ app.post('/sessions', async (req, res) => {
     res.json({ userId: user._id, accessToken: user.accessToken })
   }
   else {
-    res.json({ notFound: true, message: 'The user was not found or password was wrong' })
+    res.json({ notFound: true, message: 'The user was not found or entered password is wrong' })
   }
 })
 
