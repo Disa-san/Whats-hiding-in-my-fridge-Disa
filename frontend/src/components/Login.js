@@ -4,10 +4,12 @@ const URL = 'http://localhost:8000/sessions'
 
 
 export const LoginUser = props => {
-  const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
+
   const onLoggedIn = event => {
-    //  event.preventDefault()
+    event.preventDefault()
 
     fetch(URL, {
       method: "POST",
@@ -21,13 +23,16 @@ export const LoginUser = props => {
         return res.json()
       })
       .then(({ accessToken }) => {
-        window.localStorage.setItem('accessToken', JSON.stringify(accessToken))
-        onLoggedIn()
+        window.localStorage.setItem('accessToken', accessToken)
       })
       .then(json => console.log(json))
-      .catch(err => console.log("error:", err))
+      .catch(err => {
+        setErrorMessage(err.message)
+      })
+
   }
 
+  //console.log("error:", err))
 
   return (
     <div>
@@ -43,8 +48,9 @@ export const LoginUser = props => {
           type="submit"
           onClick={onLoggedIn}>
           LOG IN
-    </button>
+        </button>
       </form>
+      {errorMessage && <div>{errorMessage}</div>}
     </div>
   )
 }
@@ -54,7 +60,7 @@ export const LoginUser = props => {
 // localStorage.setItem('accessToken');
 
 // The syntax for reading the localStorage item is as follows:
-// const access = localStorage.getItem('accessToken');
+// const accessToken = localStorage.getItem('accessToken');
 
 // The syntax for removing the localStorage item is as follows:
 // localStorage.removeItem('myCat');

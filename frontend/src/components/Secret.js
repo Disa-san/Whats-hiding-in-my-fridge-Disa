@@ -36,8 +36,6 @@ export const Secret = () => {
   return (
     <>
       <div>
-        <h1>Welcome!</h1>
-        <h3>You´ve successfully signed in!</h3>
         <h5>{message}</h5>
       </div>
       {errorMessage && <div>{errorMessage}</div>}
