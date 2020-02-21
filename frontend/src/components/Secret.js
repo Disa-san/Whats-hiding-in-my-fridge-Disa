@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
+// import '../index.css'
 
 const URL = 'http://localhost:8000/secrets'
 
@@ -9,9 +10,10 @@ export const Secret = () => {
 
   // Hämtar accessToken från localStorage i webbläsaren,
   // och skickar in den i headers. Funkar det även om den är undefined i localStorage?
-  const accessToken = window.localStorage.getItem('accessToken')
 
-  useEffect(() => {
+  const handleSecret = () => {
+    const accessToken = window.localStorage.getItem('accessToken')
+
     setErrorMessage('')
     fetch(URL, {
       method: "GET",
@@ -27,18 +29,28 @@ export const Secret = () => {
       .catch(err => {
         setErrorMessage(err.message)
       })
-  }, [accessToken])
-
-  if (!message) {
-    return <div>We are trying to log you in</div>
   }
 
+  // if (!message) {
+  //   return <div>We are trying to log you in</div>
+  // }
+
   return (
-    <>
+    <article>
+      <h1>{message}</h1>
       <div>
-        <h5>{message}</h5>
+        <div>
+          <button className="button"
+            type='submit'
+            onClick={handleSecret}
+          >
+            Secret Button
+          </button>
+          <>
+            {errorMessage && <div className="error">{errorMessage}</div>}
+          </>
+        </div>
       </div>
-      {errorMessage && <div>{errorMessage}</div>}
-    </>
+    </article>
   )
 }

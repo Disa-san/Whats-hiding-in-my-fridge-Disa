@@ -14,11 +14,14 @@ mongoose.Promise = Promise
 const User = mongoose.model('User', {
   name: {
     type: String,
-    unique: true
+    unique: true,
+    required: true
   },
   email: {
+    email: mongoose.SchemaTypes.Email,
     type: String,
-    unique: true
+    unique: true,
+    required: true
   },
   password: {
     type: String,
@@ -77,7 +80,7 @@ app.post('/users', async (req, res) => {
 //Applies the middleware-function above that checks authentication
 app.get('/secrets', authenticateUser)
 app.get('/secrets', (req, res) => {
-  res.json({ secret: 'This is a very secret message' })
+  res.json({ message: 'This is a very secret message' })
 })
 
 //Logging in endpoint

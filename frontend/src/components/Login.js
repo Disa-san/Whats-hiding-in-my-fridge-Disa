@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+// import '../index.css'
 
 const URL = 'http://localhost:8000/sessions'
 
@@ -39,12 +40,13 @@ export const LoginUser = props => {
       <form onSubmit={onLoggedIn}>
         <h3>Login</h3>
         <label>
-          <input value={email} type="text" placeholder="Email" required onChange={event => setEmail(event.target.value)} />
+          <input className="log-in" value={email} type="email" placeholder="Email" required onChange={event => setEmail(event.target.value)} />
         </label>
         <label>
-          <input value={password} type="text" placeholder="Password" required onChange={event => setPassword(event.target.value)} />
+          <input className="log-in" value={password} type="password" placeholder="Password" required onChange={event => setPassword(event.target.value)} />
         </label>
         <button
+          className="button"
           type="submit"
           onClick={onLoggedIn}>
           LOG IN

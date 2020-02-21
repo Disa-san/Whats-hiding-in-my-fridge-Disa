@@ -1,13 +1,18 @@
 import React from 'react'
 import { NewUser } from './components/Form1'
 import { LoginUser } from './components/Login'
+import { Secret } from './components/Secret'
 
 export const App = () => {
   return (
-    <div>
-      <NewUser />
-      <LoginUser />
-    </div>
+    <section>
+      <h1>Tell us who you are!</h1>
+      <div>
+        <NewUser />
+        <LoginUser />
+        <Secret />
+      </div>
+    </section>
   )
 }
 
