@@ -19,7 +19,7 @@ h1 {
 
 h3 {
   font-size: 24px;
-
+  margin-bottom: 0;
 }
 
 section {
@@ -47,11 +47,13 @@ button {
   width: 150px;
   height: 20px;
   font-size: 14px;
+  margin: 5px;
 }
 
 .login-form {
-  display: flex;
-  justify-content: space-between;
+  /* display: flex;
+  justify-content: space-between; */
+  display: inline;
 }
 
 .log-in {
@@ -61,6 +63,7 @@ button {
   width: 150px;
   height: 20px;
   font-size: 14px;
+  margin: 5px;
 }
 
 input {
