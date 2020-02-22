@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
-// import '../index.css'
 
 
 
 const URL = 'http://localhost:8000/users'
 
-export const NewUser = props => {
+export const NewUser = () => {
   const [name, setName] = useState("")
   const [password, setPassword] = useState("")
   const [email, setEmail] = useState("")
   const [errorMessage, setErrorMessage] = useState("")
-  const [message, setMessage] = useState('')
+  const [message, setMessage] = useState("")
+
   const handleSubmit = event => {
     event.preventDefault()
 
@@ -19,22 +19,26 @@ export const NewUser = props => {
       body: JSON.stringify({ name, email, password }),
       headers: { "Content-Type": "application/json" }
     })
-      .then(res => res.json())
-      // .then(() => {
-      //   setName("")
-      //   setEmail("")
-      //   setPassword("")
-      // })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error('Could not create user')
+        }
+        return res.json()
+      })
+      .then(() => {
+        setName("")
+        setEmail("")
+        setPassword("")
+      })
       .then(json => console.log(json))
+      .then(json => setMessage(json.message)
+      )
       .catch(err => console.log("error:", err))
       .catch(err => {
         setErrorMessage(err.message)
       })
-      .catch(err => {
-        setMessage(message)
-      })
-  }
 
+  }
 
   return (
     <div>
@@ -54,13 +58,17 @@ export const NewUser = props => {
         <button
           className="button"
           type="submit"
+          disabled={name.length < 3 || password.length < 4 ? true : false}
           onClick={handleSubmit}>
           SIGN UP
       </button>
       </form>
+      <p className="charCount">{name.length} / 100 </p>
+      <p className="charCount">{password.length} / 12 </p>
+      <p>{message}</p>
       <>
-        {/* {errorMessage && <div>{errorMessage}</div>} */}
-        {message && <div>{message}</div>}
+        {errorMessage && <div><p>{errorMessage}</p></div>}
+        {message && <div><p>{message}</p></div>}
 
       </>
     </div>

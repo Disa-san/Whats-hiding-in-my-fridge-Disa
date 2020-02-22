@@ -15,7 +15,8 @@ const User = mongoose.model('User', {
   name: {
     type: String,
     unique: true,
-    required: true
+    required: true,
+    minlenght: 4
   },
   email: {
     email: mongoose.SchemaTypes.Email,
@@ -25,7 +26,8 @@ const User = mongoose.model('User', {
   },
   password: {
     type: String,
-    required: true
+    required: true,
+    minlenght: 4
   },
   accessToken: {
     type: String,
@@ -68,9 +70,10 @@ app.post('/users', async (req, res) => {
     const { name, email, password } = req.body
     //TO NOT STORE PLAIN TEXT PASSWORDS
     const user = new User({ name, email, password: bcrypt.hashSync(password) })
-    // const saved = await 
-    user.save()
-    res.status(201).json({ id: user._id, accessToken: user.accessToken })
+    const saved = await
+      // const saved = await user.save() res.status(201).json(saved)
+      user.save()
+    res.status(201).json({ id: user._id, accessToken: user.accessToken, message: "Created user" })
   } catch (err) {
     res.status(400).json({ message: 'Could not create User', errors: err.errors })
   }

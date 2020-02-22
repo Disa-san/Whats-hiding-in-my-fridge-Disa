@@ -40,7 +40,7 @@ export const Secret = () => {
       <h1>{message}</h1>
       <div>
         <div>
-          <button className="button"
+          <button className="secret-button"
             type='submit'
             onClick={handleSecret}
           >
@@ -50,7 +50,11 @@ export const Secret = () => {
             {errorMessage && <div className="error">{errorMessage}</div>}
           </>
         </div>
+        {/* <Link to="/">
+          < /> <span> ⬅️ </span>
+        </Link> */}
       </div>
-    </article>
+    </article >
   )
 }
+

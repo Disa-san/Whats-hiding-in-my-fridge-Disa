@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: lightpink;
+  background-color: #fddfe7;
 }
 
 code {
@@ -15,11 +15,13 @@ code {
 
 h1 {
   font-size: 36px;
+  color: #0425ff;
 }
 
 h3 {
   font-size: 24px;
   margin-bottom: 0;
+  color: #0425ff;
 }
 
 section {
@@ -32,8 +34,8 @@ button {
   font-size: 20px;
   appearance: none;
   border-radius: 40px;
-  background: black;
-  color: white;
+  background: #f93526;
+  color:#fddfe7;
   border: none;
   padding: 10px 30px;
   font-weight: bold;
@@ -41,9 +43,9 @@ button {
   margin-left: 10px;
 }
 .register {
-  border-color: #000;
+  border-color: #f6a621;
   border-radius: 40px;
-  border-width: 1px;
+  border-width: 5px;
   width: 150px;
   height: 20px;
   font-size: 14px;
@@ -51,15 +53,13 @@ button {
 }
 
 .login-form {
-  /* display: flex;
-  justify-content: space-between; */
   display: inline;
 }
 
 .log-in {
-  border-color: #000;
+  border-color: #f6a621;
   border-radius: 40px;
-  border-width: 1px;
+  border-width: 5px;
   width: 150px;
   height: 20px;
   font-size: 14px;
@@ -75,5 +75,18 @@ input {
   color: purple;
   font-weight: bold;
   margin: 20px 0px
+}
 
+.secret.button {
+  font-size: 20px;
+  appearance: none;
+  border-radius: 40px;
+  background: #black;
+  color:#fddfe7;
+  border: none;
+  padding: 10px 30px;
+  font-weight: bold;
+  margin-top: 30px;
+  margin-left: 10px;
+  position: absolute;
 }
