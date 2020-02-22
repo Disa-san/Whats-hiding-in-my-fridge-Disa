@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-// import '../index.css'
+// import { LoginUser } from './Login'
+
 
 const URL = 'http://localhost:8000/secrets'
 
@@ -9,7 +10,7 @@ export const Secret = () => {
 
 
   // Hämtar accessToken från localStorage i webbläsaren,
-  // och skickar in den i headers. Funkar det även om den är undefined i localStorage?
+  // och skickar in den i headers. 
 
   const handleSecret = () => {
     const accessToken = window.localStorage.getItem('accessToken')
@@ -51,7 +52,7 @@ export const Secret = () => {
           </>
         </div>
         {/* <Link to="/">
-          < /> <span> ⬅️ </span>
+          <span> ⬅️ </span>
         </Link> */}
       </div>
     </article >

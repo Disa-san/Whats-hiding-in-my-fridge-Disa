@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import '../index.css'
+import { Link } from 'react-router-dom'
 
 const URL = 'http://localhost:8000/sessions'
 
@@ -23,6 +23,7 @@ export const LoginUser = props => {
         }
         return res.json()
       })
+
       .then(({ accessToken }) => {
         window.localStorage.setItem('accessToken', accessToken)
       })
@@ -30,7 +31,6 @@ export const LoginUser = props => {
       .catch(err => {
         setErrorMessage(err.message)
       })
-
   }
 
   //console.log("error:", err))
@@ -46,17 +46,23 @@ export const LoginUser = props => {
           <input className="log-in" value={password} type="password" placeholder="Password" required onChange={event => setPassword(event.target.value)} />
         </label>
         <button
-          className="button"
           type="submit"
           onClick={onLoggedIn}>
           LOG IN
         </button>
-      </form>
+        <Link to='/secrets'>
+          <button>
+            Enter secret world
+            </button>
+        </Link>
+      </form >
       {errorMessage && <div>{errorMessage}</div>}
-    </div>
+    </div >
   )
 }
 
+
+//<Link to="route" target="_blank" onClick={(event) => {event.preventDefault(); window.open(this.makeHref("route"));}} />
 
 // The following snippet accesses the current domain's local Storage object and adds a data item to it using Storage.setItem().
 // localStorage.setItem('accessToken');
@@ -65,7 +71,7 @@ export const LoginUser = props => {
 // const accessToken = localStorage.getItem('accessToken');
 
 // The syntax for removing the localStorage item is as follows:
-// localStorage.removeItem('myCat');
+// const accessToken = localStorage.removeItem('accessToken');
 
 // The syntax for removing all the localStorage items is as follows:
 

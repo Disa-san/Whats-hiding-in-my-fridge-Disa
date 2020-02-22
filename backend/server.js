@@ -16,7 +16,7 @@ const User = mongoose.model('User', {
     type: String,
     unique: true,
     required: true,
-    minlenght: 4
+    minlength: 4
   },
   email: {
     email: mongoose.SchemaTypes.Email,
@@ -27,7 +27,7 @@ const User = mongoose.model('User', {
   password: {
     type: String,
     required: true,
-    minlenght: 4
+    minlength: 4
   },
   accessToken: {
     type: String,

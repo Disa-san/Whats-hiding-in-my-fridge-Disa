@@ -16,13 +16,13 @@ export const App = () => {
               <NewUser />
 
               <LoginUser />
-
+              <LogoutUser />
             </div>
           </section>
         </Route>
-        <Route path="/secrets">
+        <Route path="/secrets" exact>
           <Secret />
-          <LogoutUser />
+
         </Route>
       </Switch>
     </BrowserRouter>
