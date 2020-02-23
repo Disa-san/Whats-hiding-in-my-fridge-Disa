@@ -63,8 +63,10 @@ export const NewUser = () => {
           SIGN UP
       </button>
       </form>
-      <p className="charCount">{name.length} / 100 </p>
-      <p className="charCount">{password.length} / 12 </p>
+      <div className="charcountWrapper">
+        <p className="charCount">{name.length} / 100 </p>
+        <p className="charCount">{password.length} / 12 </p>
+      </div>
       <p>{message}</p>
       <>
         {errorMessage && <div><p>{errorMessage}</p></div>}

@@ -13,15 +13,34 @@ code {
     monospace;
 }
 
+.charCount {
+  color: #0425ff;
+}
+
+.charcountWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 60px;
+  margin-right: 230px;
+}
+
 h1 {
   font-size: 36px;
   color: #0425ff;
+  
 }
 
 h3 {
   font-size: 24px;
   margin-bottom: 0;
   color: #0425ff;
+}
+
+h4 {
+  font-size: 24px;
+  margin-bottom: 0;
+  width: 50%;
+  margin-top: 50px;
 }
 
 section {
@@ -77,16 +96,26 @@ input {
   margin: 20px 0px
 }
 
-.secret.button {
+.buttons-loggedin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 150px;
+}
+
+.secret-button {
   font-size: 20px;
   appearance: none;
   border-radius: 40px;
-  background: black;
+  background: #0425ff;
   color:#fddfe7;
   border: none;
   padding: 10px 30px;
   font-weight: bold;
   margin-top: 30px;
   margin-left: 10px;
-  position: absolute;
+  /* position: absolute; */
 }
+
+

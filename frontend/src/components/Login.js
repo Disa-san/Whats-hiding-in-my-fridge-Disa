@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 
 const URL = 'http://localhost:8000/sessions'
 
 
 export const LoginUser = props => {
+  //useHistory this to route to "StartPage" when login succeeded.
+  const history = useHistory()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState('')
@@ -25,7 +27,10 @@ export const LoginUser = props => {
       })
 
       .then(({ accessToken }) => {
-        window.localStorage.setItem('accessToken', accessToken)
+        if (accessToken) {
+          window.localStorage.setItem('accessToken', accessToken)
+          history.push(`/secrets`)
+        }
       })
       .then(json => console.log(json))
       .catch(err => {
@@ -50,11 +55,6 @@ export const LoginUser = props => {
           onClick={onLoggedIn}>
           LOG IN
         </button>
-        <Link to='/secrets'>
-          <button>
-            Enter secret world
-            </button>
-        </Link>
       </form >
       {errorMessage && <div>{errorMessage}</div>}
     </div >

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import { LoginUser } from './Login'
+import { Link } from 'react-router-dom'
 
 
 const URL = 'http://localhost:8000/secrets'
@@ -38,8 +38,8 @@ export const Secret = () => {
 
   return (
     <article>
-      <h1>{message}</h1>
-      <div>
+
+      <div className="buttons-loggedin">
         <div>
           <button className="secret-button"
             type='submit'
@@ -51,9 +51,14 @@ export const Secret = () => {
             {errorMessage && <div className="error">{errorMessage}</div>}
           </>
         </div>
-        {/* <Link to="/">
-          <span> ⬅️ </span>
-        </Link> */}
+
+        <Link to="/">
+          <button>
+            <span role="img" aria-label="take me back"> ⬅️ </span>
+            Back
+          </button>
+        </Link>
+        <h4>{message}</h4>
       </div>
     </article >
   )
