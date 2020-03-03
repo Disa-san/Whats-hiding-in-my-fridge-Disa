@@ -4,34 +4,33 @@ import { NewUser } from './components/Form1'
 import { LoginUser } from './components/Login'
 import { LogoutUser } from './components/Logout'
 import { Secret } from './components/Secret'
+import { NewItem } from './components/AddItem'
 
 export const App = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route path="/" exact>
-          <section>
-            <h1>Tell us who you are!</h1>
+          <section className="first-page">
+            <h1>What's hiding in your fridge?</h1>
             <div>
+              <LoginUser />
               <NewUser />
 
-              <LoginUser />
-              <LogoutUser />
             </div>
           </section>
         </Route>
-        <Route path="/secrets" exact>
-          <Secret />
-
+        <Route path="/items" exact>
+          <section>
+            <Secret />
+            <Route path="/items" exact>
+              <NewItem />
+            </Route>
+            <LogoutUser />
+          </section>
         </Route>
       </Switch>
     </BrowserRouter>
   )
 }
 
-
-//Sign up form - localhost:8000/users
-//namn, email, password
-//Login form - localhost:8000/sessions
-//email, password
-//Authenicated content - localhost:8000/secrets

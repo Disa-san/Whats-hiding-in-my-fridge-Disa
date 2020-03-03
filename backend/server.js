@@ -6,7 +6,7 @@ import crypto from 'crypto'
 import bcrypt from 'bcrypt-nodejs'
 
 //connect to database:
-const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/auth"
+const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/fridge"
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = Promise
 
@@ -35,6 +35,28 @@ const User = mongoose.model('User', {
     default: () => crypto.randomBytes(128).toString('hex')
   }
 })
+
+const Items = mongoose.model('Items', {
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  food: {
+    type: String,
+    required: true,
+    minlength: 1
+  },
+  number: {
+    type: Number,
+
+  },
+  date: {
+    type: Date,
+    required: true,
+
+  }
+})
+
 //Middleware-function
 //The param next will let express know what to do when authorization has taken place
 const authenticateUser = async (req, res, next) => {
@@ -44,7 +66,7 @@ const authenticateUser = async (req, res, next) => {
     req.user = user
     next()
   } else {
-    res.status(401).json({ loggedOut: true })
+    res.status(403).json({ message: "You need to login to access this page" })
   }
 }
 
@@ -68,12 +90,12 @@ app.get('/', (req, res) => {
 app.post('/users', async (req, res) => {
   try {
     const { name, email, password } = req.body
-    //TO NOT STORE PLAIN TEXT PASSWORDS
+    //DO NOT STORE PLAIN TEXT PASSWORDS
     const user = new User({ name, email, password: bcrypt.hashSync(password) })
     const saved = await
       // const saved = await user.save() res.status(201).json(saved)
       user.save()
-    res.status(201).json({ id: user._id, accessToken: user.accessToken, message: "Created user" })
+    res.status(201).json({ id: user._id, accessToken: user.accessToken, message: "✨Created user ✨" })
   } catch (err) {
     res.status(400).json({ message: 'Could not create User', errors: err.errors })
   }
@@ -81,9 +103,9 @@ app.post('/users', async (req, res) => {
 
 //Secret endpoint
 //Applies the middleware-function above that checks authentication
-app.get('/secrets', authenticateUser)
-app.get('/secrets', (req, res) => {
-  res.json({ message: '"And above all, watch with glittering eyes the whole world around you because the greatest secrets are always hidden in the most unlikely places. Those who don´t believe in magic will never find it."' })
+app.get('/items', authenticateUser)
+app.get('/items', (req, res) => {
+  res.json({ message: 'This is your food:' })
 })
 
 //Logging in endpoint
@@ -94,9 +116,35 @@ app.post('/sessions', async (req, res) => {
     res.json({ userId: user._id, accessToken: user.accessToken })
   }
   else {
-    res.json({ notFound: true, message: 'The user was not found or entered password is wrong' })
+    // res.json({ notFound: true, message: 'The user was not found or entered password is wrong' })
+    res.status(400).json({ notFound: true })
   }
 })
+
+app.post('/items', async (req, res) => {
+
+  // const { items } = req.params
+
+  // app.post('/items', async (req, res) => {
+  // try {
+  //   const { name, email, password } = req.body
+  try {
+    const { food, number, date } = req.body
+    const item = new Item({ food, number, date })
+    const saved = await
+      // const saved = await user.save() res.status(201).json(saved)
+      item.save()
+    res.status(201).json({ message: "item added" })
+  } catch (err) {
+    res.status(403).json({ message: 'Could not add item', errors: err.errors })
+  }
+})
+
+// app.get('/users/:items', authenticateUser)
+// app.get('/users/:items', (req, res) => {
+//   res.json({ message: 'This is your food:' })
+// })
+
 
 // Start the server
 app.listen(port, () => {

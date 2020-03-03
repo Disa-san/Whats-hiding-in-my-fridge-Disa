@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
+
 const URL = 'http://localhost:8000/sessions'
 
-
 export const LoginUser = props => {
-  //useHistory this to route to "StartPage" when login succeeded.
+  //useHistory this to route to "StartPage" when login succeeded. 
   const history = useHistory()
+
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [errorMessage, setErrorMessage] = useState('')
@@ -21,7 +22,7 @@ export const LoginUser = props => {
     })
       .then(res => {
         if (!res.ok) {
-          throw new Error('The user was not found or entered password is wrong')
+          throw new Error('The user was not found or entered password was incorrect')
         }
         return res.json()
       })
@@ -29,21 +30,19 @@ export const LoginUser = props => {
       .then(({ accessToken }) => {
         if (accessToken) {
           window.localStorage.setItem('accessToken', accessToken)
-          history.push(`/secrets`)
+          history.push(`/items`)
         }
       })
-      .then(json => console.log(json))
       .catch(err => {
         setErrorMessage(err.message)
       })
   }
 
-  //console.log("error:", err))
 
   return (
     <div>
       <form onSubmit={onLoggedIn}>
-        <h3>Login</h3>
+        <h3>Login to your fridge</h3>
         <label>
           <input className="log-in" value={email} type="email" placeholder="Email" required onChange={event => setEmail(event.target.value)} />
         </label>
@@ -52,6 +51,7 @@ export const LoginUser = props => {
         </label>
         <button
           type="submit"
+          disabled={password.length < 4 ? true : false}
           onClick={onLoggedIn}>
           LOG IN
         </button>
@@ -62,8 +62,6 @@ export const LoginUser = props => {
 }
 
 
-//<Link to="route" target="_blank" onClick={(event) => {event.preventDefault(); window.open(this.makeHref("route"));}} />
-
 // The following snippet accesses the current domain's local Storage object and adds a data item to it using Storage.setItem().
 // localStorage.setItem('accessToken');
 
@@ -71,7 +69,7 @@ export const LoginUser = props => {
 // const accessToken = localStorage.getItem('accessToken');
 
 // The syntax for removing the localStorage item is as follows:
-// const accessToken = localStorage.removeItem('accessToken');
+// localStorage.removeItem('myCat');
 
 // The syntax for removing all the localStorage items is as follows:
 

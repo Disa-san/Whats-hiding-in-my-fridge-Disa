@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 
-const URL = 'http://localhost:8000/secrets'
+
+
+const URL = 'http://localhost:8000/items'
+
 
 export const Secret = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
+
 
 
   // Hämtar accessToken från localStorage i webbläsaren,
@@ -25,13 +29,18 @@ export const Secret = () => {
           throw new Error('Access denied')
         }
         return res.json()
+
       })
-      .then(json => setMessage(json.message))
+      .then(json => {
+        console.log(json)
+        setMessage(json.message)
+      })
+
       .catch(err => {
         setErrorMessage(err.message)
       })
   }
-
+  // We can not get this error message to work
   // if (!message) {
   //   return <div>We are trying to log you in</div>
   // }
@@ -41,25 +50,25 @@ export const Secret = () => {
 
       <div className="buttons-loggedin">
         <div>
-          <button className="secret-button"
+          <button className="show-items-button"
             type='submit'
             onClick={handleSecret}
           >
-            Secret Button
+            SHOW ME MY FRIDGE
           </button>
           <>
             {errorMessage && <div className="error">{errorMessage}</div>}
           </>
         </div>
-
-        <Link to="/">
+        <h4>{message}</h4>
+        <Link to='/items'>
           <button>
-            <span role="img" aria-label="take me back"> ⬅️ </span>
-            Back
+            <span role="img" aria-label="take me back">  </span> NEW ITEM
           </button>
         </Link>
-        <h4>{message}</h4>
+
       </div>
+
     </article >
   )
 }
