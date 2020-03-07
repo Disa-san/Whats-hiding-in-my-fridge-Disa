@@ -42,27 +42,28 @@ export const NewUser = () => {
   }
 
   return (
-    <div>
+    <div className="signup-section">
       <form onSubmit={handleSubmit}>
-        <h3>Sign up here</h3>
-        <div className="login-form">
+        <h5>Sign up here</h5>
+        <div className="signup-form">
           <label>
-            <input className="register" value={name} type="text" placeholder="My name" required onChange={event => setName(event.target.value)} />
+            <input className="signup-field" value={name} type="text" placeholder="My name" required onChange={event => setName(event.target.value)} />
           </label>
           <label>
-            <input className="register" value={email} type="email" placeholder="Email" required onChange={event => setEmail(event.target.value)} />
+            <input className="signup-field" value={email} type="email" placeholder="Email" required onChange={event => setEmail(event.target.value)} />
           </label>
           <label>
-            <input className="register" value={password} type="password" placeholder="Password" required onChange={event => setPassword(event.target.value)} />
+            <input className="signup-field" value={password} type="password" placeholder="Password" required onChange={event => setPassword(event.target.value)} />
           </label>
         </div>
-        <button
-          className="button"
-          type="submit"
-          disabled={name.length < 4 || password.length < 4 ? true : false}
-          onClick={handleSubmit}>
-          SIGN UP
-      </button>
+        <div className="signup-button-div">
+          <button className="signup-button"
+            type="submit"
+            disabled={name.length < 4 || password.length < 4 ? true : false}
+            onClick={handleSubmit}>
+            SIGN UP
+          </button>
+        </div>
       </form>
       {errorMessage && <div><p>{errorMessage}</p></div>}
       {message && <div><p>{message}</p></div>}

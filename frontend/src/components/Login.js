@@ -40,22 +40,26 @@ export const LoginUser = props => {
 
 
   return (
-    <div>
+    <div className="login">
       <form onSubmit={onLoggedIn}>
         <h3>Login to your fridge</h3>
-        <label>
-          <input className="log-in" value={email} type="email" placeholder="Email" required onChange={event => setEmail(event.target.value)} />
-        </label>
-        <label>
-          <input className="log-in" value={password} type="password" placeholder="Password" required onChange={event => setPassword(event.target.value)} />
-        </label>
-        <button
-          type="submit"
-          disabled={password.length < 4 ? true : false}
-          onClick={onLoggedIn}>
-          LOG IN
-        </button>
-      </form >
+        <div className="login-form">
+          <label>
+            <input className="login-field" value={email} type="email" placeholder="Email" required onChange={event => setEmail(event.target.value)} />
+          </label>
+          <label>
+            <input className="login-field" value={password} type="password" placeholder="Password" required onChange={event => setPassword(event.target.value)} />
+          </label>
+        </div>
+        <div className="login-button-div">
+          <button className="login-button"
+            type="submit"
+            disabled={password.length < 4 ? true : false}
+            onClick={onLoggedIn}>
+            LOG IN
+            </button>
+        </div>
+      </form>
       {errorMessage && <div>{errorMessage}</div>}
     </div >
   )

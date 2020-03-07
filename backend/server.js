@@ -52,7 +52,7 @@ const Items = mongoose.model('Items', {
   },
   date: {
     type: Date,
-    required: true,
+    required: false,
 
   }
 })
@@ -101,12 +101,7 @@ app.post('/users', async (req, res) => {
   }
 })
 
-//Secret endpoint
-//Applies the middleware-function above that checks authentication
-app.get('/items', authenticateUser)
-app.get('/items', (req, res) => {
-  res.json({ message: 'This is your food:' })
-})
+
 
 //Logging in endpoint
 app.post('/sessions', async (req, res) => {
@@ -121,6 +116,23 @@ app.post('/sessions', async (req, res) => {
   }
 })
 
+//Fride items endpoint
+//Applies the middleware-function above that checks authentication
+// app.get('/items', authenticateUser)
+app.get('/items', async (req, res) => {
+  const items = await Items.find()
+  // if (items)
+  //   return (
+  res.json({ message: "These are the items in your frige:", items })
+})
+// )
+
+// })
+
+// else {
+//   res.status(404).json({ message: "no food added yet" })
+// })
+
 app.post('/items', async (req, res) => {
 
   // const { items } = req.params
@@ -129,14 +141,16 @@ app.post('/items', async (req, res) => {
   // try {
   //   const { name, email, password } = req.body
   try {
-    const { food, number, date } = req.body
-    const item = new Item({ food, number, date })
-    const saved = await
-      // const saved = await user.save() res.status(201).json(saved)
-      item.save()
+    const { food, number } = req.body
+    const user = await User.findOne({ accessToken: req.header('Authorization') })
+    const item = new Items({ food, number, user })
+
+    // const saved = await
+    const saved = await item.save()
+    // item.save()
     res.status(201).json({ message: "item added" })
   } catch (err) {
-    res.status(403).json({ message: 'Could not add item', errors: err.errors })
+    res.status(403).json({ message: "Could not add item", errors: err.errors })
   }
 })
 

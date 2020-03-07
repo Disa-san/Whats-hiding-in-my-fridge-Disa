@@ -14,12 +14,12 @@ export const LogoutUser = props => {
   return (
     <div>
       <Link to='/'>
-        <button>
-          <span role="img" aria-label="take me back">  ⬅</span> BACK
+        <button className="back-button">
+          <span role="img" aria-label="take me back">  ⬅</span> HOME
           </button>
       </Link>
       <button
-        className="button"
+        className="log-out-button"
         type="submit"
         onClick={onLoggedOut}>
         LOG OUT
@@ -27,3 +27,5 @@ export const LogoutUser = props => {
     </div>
   )
 }
+
+
