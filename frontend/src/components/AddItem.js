@@ -43,8 +43,8 @@ export const NewItem = () => {
   }
 
   return (
-    <div className="add-item">
-      <form onSubmit={handleSubmit}>
+    <div className="new-item">
+      <form className="add-item" onSubmit={handleSubmit}>
         <h3>Add food to my fridge</h3>
         <div className="add-item-form">
           <label>
@@ -71,7 +71,7 @@ export const NewItem = () => {
       </form>
       <Link to='/items'>
         <button className="home-button">
-          <span role="img" aria-label="take me back">  ⬅</span> HOME
+          <span role="img" aria-label="take me back">  ⬅</span> BACK TO FRIDGE
           </button>
       </Link>
     </div>

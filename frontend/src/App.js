@@ -1,9 +1,9 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom"
-import { NewUser } from './components/Form1'
+import { NewUser } from './components/SignUp'
 import { LoginUser } from './components/Login'
 import { LogoutUser } from './components/Logout'
-import { Secret } from './components/Secret'
+import { MyFridge } from './components/MyFridge'
 import { NewItem } from './components/AddItem'
 import { Menu, Burger } from './components/HamburgerMenu'
 
@@ -15,7 +15,9 @@ export const App = () => {
       <Switch>
         <Route path="/" exact>
           <section className="first-page">
-            <h1>What's hiding in my fridge?</h1>
+            <div className="header">
+              <h1><span className="header-text">What's hiding in my fridge?</span></h1>
+            </div>
             <div>
               <LoginUser />
               <NewUser />
@@ -25,17 +27,22 @@ export const App = () => {
         </Route>
         {/* <Switch> */}
         <Route path="/items" exact>
-
           <section className="new-item-page">
-            <Secret />
+            <MyFridge />
             <LogoutUser />
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />
           </section>
         </Route>
-        <Route path="/items/newitem" component={NewItem} />
+        <Route path="/items/newitem">
+          <section className="new-item-section">
+            <NewItem />
+          </section>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+        </Route>
         {/* </Switch> */}
       </Switch>
-    </BrowserRouter>
+    </BrowserRouter >
   )
 }

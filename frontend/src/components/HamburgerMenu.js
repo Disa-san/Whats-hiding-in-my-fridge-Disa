@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { LogoutUser } from './Logout'
 
 
 
@@ -42,7 +43,13 @@ const StyledMenu = styled.nav`
   }
 `
 
+
+
 export const Menu = ({ open }) => {
+  const onLoggedOut = event => {
+    event.preventDefault()
+    window.localStorage.removeItem('accessToken')
+  }
   return (
     <StyledMenu open={open}>
       <a href="/items/newItem">
@@ -54,7 +61,7 @@ export const Menu = ({ open }) => {
         About
         </a>
       <a href="/">
-        <span role="img" aria-label="contact">✖️</span>
+        <span onClick={onLoggedOut} role="img" aria-label="contact" >✖️</span>
         Log out
         </a>
     </StyledMenu>

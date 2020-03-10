@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './logout.css'
 
 
 export const LogoutUser = props => {
@@ -12,7 +13,7 @@ export const LogoutUser = props => {
   }
 
   return (
-    <div>
+    <div className="action-buttons-div">
       <Link to='/'>
         <button className="back-button">
           <span role="img" aria-label="take me back">  ⬅</span> HOME

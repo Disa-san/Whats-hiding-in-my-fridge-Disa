@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NewItem } from './AddItem'
+import './myfridge.css'
+import './logout.css'
 
 
 const URL = 'http://localhost:8000/items'
 
 
-export const Secret = () => {
+export const MyFridge = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
   const [items, setItems] = useState("")
@@ -18,7 +20,7 @@ export const Secret = () => {
   // Getting accessToken from localStorage in web browser,
   // and sending it in to headers. 
 
-  const handleSecret = () => {
+  const handleMyFridge = () => {
     const accessToken = window.localStorage.getItem('accessToken')
     // const { food } = items.food
 
@@ -34,7 +36,7 @@ export const Secret = () => {
         return res.json()
       })
       .then(json => {
-        console.log(json.items[0])
+        console.log(json.items)
         setMessage(json.message)
         setItems(json.items)
       })
@@ -52,7 +54,7 @@ export const Secret = () => {
         <div>
           <button className="show-items-button"
             type='submit'
-            onClick={handleSecret}
+            onClick={handleMyFridge}
           >
             SHOW ME MY FRIDGE
           </button>
@@ -62,7 +64,7 @@ export const Secret = () => {
         </div>
         <h4>{message}</h4>
         <div>
-          {/* {items.items.map((item) => {
+          {/* {items.map((item) => {
             return (
               <li key={item._id}>{item.food}</li>
             )

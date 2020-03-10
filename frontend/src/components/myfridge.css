@@ -1,0 +1,70 @@
+
+
+h3 {
+  font-size: 16px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  color: #514e4c;
+  font-weight: 500;
+  /* margin-top: 120px; */
+  /* box-shadow:  16px 16px 100px #c4cfc8, 
+  -16px -16px 100px #ffffff; */
+}
+
+h4 {
+  font-size: 16px;
+  margin-bottom: 0;
+  width: 50%;
+  margin-top: 50px;
+}
+
+h5 {
+  font-size: 16px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  color: #514e4c;
+  font-weight: 500;
+}
+
+.buttons-loggedin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 150px;
+  cursor: pointer;
+}
+
+.show-items-button {
+  font-size: 20px;
+  cursor: pointer;
+  appearance: none;
+  background: black;
+  color:#8f8995;
+  border: none;
+  padding: 10px 30px;
+  font-weight: light;
+  margin-top: 30px;
+  margin-left: 10px;
+  /* position: absolute; */
+  background: #e7f3eb;
+  box-shadow:  16px 16px 31px #c2ccc5, 
+             -16px -16px 31px #ffffff;
+}
+
+.new-item-button-link {
+  font-size: 20px;
+  appearance: none;
+  cursor: pointer;
+  background: black;
+  color:#8f8995;
+  border: none;
+  padding: 10px 30px;
+  font-weight: light;
+  margin-top: 30px;
+  margin-left: 10px;
+  border-radius: 21px;
+  background: #e7f3eb;
+  box-shadow:  16px 16px 31px #c2ccc5, 
+             -16px -16px 31px #ffffff;
+}
