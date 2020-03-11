@@ -4,6 +4,7 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt-nodejs'
+// import { isBuffer } from 'util'
 
 //connect to database:
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/fridge"
@@ -151,6 +152,15 @@ app.post('/items', async (req, res) => {
     res.status(201).json({ message: "item added" })
   } catch (err) {
     res.status(403).json({ message: "Could not add item", errors: err.errors })
+  }
+})
+
+app.delete('/items/:id', async (req, res) => {
+  try {
+    const removeItem = await Items.deleteOne({ _id: req.params.id })
+    res.json(removeItem)
+  } catch (error) {
+    res.status(403).json({ message: "Item could not be deleted" })
   }
 })
 

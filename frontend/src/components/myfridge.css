@@ -54,8 +54,8 @@ h5 {
 
 .new-item-button-link {
   font-size: 20px;
-  appearance: none;
   cursor: pointer;
+  appearance: none;
   background: black;
   color:#8f8995;
   border: none;
@@ -63,7 +63,7 @@ h5 {
   font-weight: light;
   margin-top: 30px;
   margin-left: 10px;
-  border-radius: 21px;
+  /* position: absolute; */
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
              -16px -16px 31px #ffffff;

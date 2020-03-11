@@ -6,6 +6,7 @@ import { LogoutUser } from './components/Logout'
 import { MyFridge } from './components/MyFridge'
 import { NewItem } from './components/AddItem'
 import { Menu, Burger } from './components/HamburgerMenu'
+import { RemoveItem } from 'components/RemoveItem'
 
 export const App = () => {
   const [open, setOpen] = React.useState(false);
@@ -29,6 +30,7 @@ export const App = () => {
         <Route path="/items" exact>
           <section className="new-item-page">
             <MyFridge />
+            {/* <RemoveItem /> */}
             <LogoutUser />
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} />

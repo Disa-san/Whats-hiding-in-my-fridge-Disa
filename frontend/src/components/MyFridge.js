@@ -11,7 +11,7 @@ const URL = 'http://localhost:8000/items'
 export const MyFridge = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
-  const [items, setItems] = useState("")
+  const [items, setItems] = useState([])
   // const [number, setNumber] = useState("")
   // const [date, setDate] = useState("")
 
@@ -64,12 +64,12 @@ export const MyFridge = () => {
         </div>
         <h4>{message}</h4>
         <div>
-          {/* {items.map((item) => {
+          {items.map((item) => {
             return (
               <li key={item._id}>{item.food}</li>
             )
-          })} */}
-          {/* {items.food_hierarchy} */}
+          })}
+
         </div>
         <Link to="/items/newitem">
           <button className="new-item-button-link">
