@@ -9,6 +9,7 @@ const StyledMenu = styled.nav`
   flex-direction: column;
   justify-content: center;
   background: #EFFFFA;
+  color: #8f8995;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
   height: 100vh;
   text-align: left;
@@ -17,6 +18,7 @@ const StyledMenu = styled.nav`
   top: 0;
   left: 0;
   transition: transform 0.3s ease-in-out;
+  
 
   @media (max-width: 576px) {
       width: 100%;
@@ -24,11 +26,11 @@ const StyledMenu = styled.nav`
 
   a {
     font-size: 2rem;
+    color:#8f8995;
     text-transform: uppercase;
     padding: 2rem 0;
     font-weight: bold;
     letter-spacing: 0.5rem;
-    color: #514e4c;
     text-decoration: none;
     transition: color 0.3s linear;
 
@@ -53,17 +55,18 @@ export const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
       <a href="/items/newItem">
-        <span role="img" aria-label="about us">🥝</span>
+        <span role="img" aria-label="new item">🥝</span>
         New item
       </a>
       <a href="/">
-        <span role="img" aria-label="price">✨</span>
+        <span role="img" aria-label="about us">✨</span>
         About
         </a>
       <a href="/">
-        <span onClick={onLoggedOut} role="img" aria-label="contact" >✖️</span>
-        Log out
-        </a>
+        <LogoutUser>
+          <span role="img" aria-label="contact" >✖️</span>
+        </LogoutUser>
+      </a>
     </StyledMenu>
   )
 }

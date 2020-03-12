@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { NewItem } from './AddItem'
+import { RemoveItem } from './RemoveItem'
 import './myfridge.css'
 import './logout.css'
 
@@ -12,8 +13,8 @@ export const MyFridge = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
   const [items, setItems] = useState([])
-  // const [number, setNumber] = useState("")
-  // const [date, setDate] = useState("")
+  // const [number, setNumber] = useState([])
+  // const [date, setDate] = useState([])
 
 
 
@@ -46,9 +47,22 @@ export const MyFridge = () => {
       })
   }
 
+  const handleRemoveItem = () => {
+    const accessToken = window.localStorage.getItem('accessToken')
+    fetch('http://localhost:8000/items/:id', {
+      method: "DELETE",
+      headers: { "Authorization": accessToken }
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log("result", result)
+
+      })
+  }
 
   return (
-    <article>
+
+    < article >
 
       <div className="buttons-loggedin">
         <div>
@@ -62,11 +76,18 @@ export const MyFridge = () => {
             {errorMessage && <div className="error">{errorMessage}</div>}
           </>
         </div>
-        <h4>{message}</h4>
-        <div>
+        {/* <h4>{message}</h4> */}
+        <div className="items-result">
+          {/* {window.scrollTo({ top: 200, left: 0, behavior: 'smooth' })} */}
           {items.map((item) => {
             return (
-              <li key={item._id}>{item.food}</li>
+              <ul key={item._id}>{item.food} {item.number} {item.date}
+                <button
+                  className="remove-item-button"
+                  type="submit"
+                  onClick={handleRemoveItem}>
+                  <span role="img" aria-label="remove item">  ✖️</span>
+                </button></ul>
             )
           })}
 

@@ -28,18 +28,18 @@ export const App = () => {
         </Route>
         {/* <Switch> */}
         <Route path="/items" exact>
-          <section className="new-item-page">
-            <MyFridge />
-            {/* <RemoveItem /> */}
-            <LogoutUser />
-            <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} />
-          </section>
+
+          <MyFridge />
+          {/* <RemoveItem /> */}
+          {/* <LogoutUser /> */}
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+
         </Route>
         <Route path="/items/newitem">
-          <section className="new-item-section">
-            <NewItem />
-          </section>
+
+          <NewItem />
+
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </Route>

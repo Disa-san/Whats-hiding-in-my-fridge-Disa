@@ -46,6 +46,7 @@ h5 {
   font-weight: light;
   margin-top: 30px;
   margin-left: 10px;
+  margin-bottom: 20px;
   /* position: absolute; */
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
@@ -63,8 +64,14 @@ h5 {
   font-weight: light;
   margin-top: 30px;
   margin-left: 10px;
-  /* position: absolute; */
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
              -16px -16px 31px #ffffff;
+}
+
+.items-result {
+  height: 320px;
+  overflow-y: auto;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }

@@ -49,11 +49,11 @@ const Items = mongoose.model('Items', {
   },
   number: {
     type: Number,
-
+    required: true,
   },
   date: {
     type: Date,
-    required: false,
+    required: true,
 
   }
 })
@@ -119,7 +119,7 @@ app.post('/sessions', async (req, res) => {
 
 //Fride items endpoint
 //Applies the middleware-function above that checks authentication
-// app.get('/items', authenticateUser)
+app.get('/items', authenticateUser)
 app.get('/items', async (req, res) => {
   const items = await Items.find()
   // if (items)
@@ -142,9 +142,9 @@ app.post('/items', async (req, res) => {
   // try {
   //   const { name, email, password } = req.body
   try {
-    const { food, number } = req.body
+    const { food, number, date } = req.body
     const user = await User.findOne({ accessToken: req.header('Authorization') })
-    const item = new Items({ food, number, user })
+    const item = new Items({ food, number, user, date })
 
     // const saved = await
     const saved = await item.save()
@@ -164,10 +164,6 @@ app.delete('/items/:id', async (req, res) => {
   }
 })
 
-// app.get('/users/:items', authenticateUser)
-// app.get('/users/:items', (req, res) => {
-//   res.json({ message: 'This is your food:' })
-// })
 
 
 // Start the server

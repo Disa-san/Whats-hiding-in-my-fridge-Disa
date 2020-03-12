@@ -41,9 +41,9 @@
   margin-top: 0;
   margin-left: 10px;
   border-radius: 10px;
-  background: linear-gradient(145deg, #f7fffb, #d0dbd4);
-  box-shadow:  16px 16px 31px #c4cfc8, 
-             -16px -16px 31px #ffffff; 
+  background: #e7f3eb;
+  box-shadow:  16px 16px 31px #c2ccc5, 
+             -16px -16px 31px #ffffff;
 }
 
 .signup-field {

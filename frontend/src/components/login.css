@@ -25,10 +25,10 @@
   margin: auto;
   border: none;
   width: 150px;
-  height: 20px;
+  height: 25px;
   font-size: 14px;
   margin: 5px;
-  /* border-radius: 21px; */
+  border-radius: 5px;
   /* background: linear-gradient(145deg, #f7fffb, #d0dbd4); */
   box-shadow:  16px 16px 31px #c4cfc8, 
              -16px -16px 31px #ffffff;
@@ -54,7 +54,7 @@
   margin-left: 10px;
   margin-bottom: 50px;
   border-radius: 10px;
-  background: linear-gradient(145deg, #f7fffb, #d0dbd4);
-  box-shadow:  16px 16px 31px #c4cfc8, 
-             -16px -16px 31px #ffffff; 
+  background: #e7f3eb;
+  box-shadow:  16px 16px 31px #c2ccc5, 
+             -16px -16px 31px #ffffff;
 }

@@ -20,6 +20,8 @@
 }
 
 .log-out-button {
+  /* width: 200px;
+  height: 35px; */
   cursor: pointer;
   appearance: none;
   background: black;
@@ -29,8 +31,16 @@
   font-weight: light;
   margin-top: 30px;
   margin-left: 10px;
-  /* position: absolute; */
+  position: absolute;
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
              -16px -16px 31px #ffffff;
+}
+
+.log-out-button-text {
+  font-size: 25px;
+  margin-bottom: 0;
+  margin-left: 10px;
+  color:#8f8995;
+  font-weight: 700;
 }

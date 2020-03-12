@@ -37,8 +37,9 @@ export const LogoutUser = props => {
         className="log-out-button"
         type="submit"
         onClick={onLoggedOut}>
-        LOG OUT
-        </button>
+
+        <p className="log-out-button-text">  <span role="img" aria-label="contact" >✖️</span> LOG OUT</p>
+      </button>
     </Link>
 
   )
