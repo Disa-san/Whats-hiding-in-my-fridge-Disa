@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import moment from "moment"
 import { NewItem } from './AddItem'
 import { RemoveItem } from './RemoveItem'
 import './myfridge.css'
@@ -13,6 +14,7 @@ export const MyFridge = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
   const [items, setItems] = useState([])
+  const [date, setDate] = useState([])
   // const [number, setNumber] = useState([])
   // const [date, setDate] = useState([])
 
@@ -40,6 +42,7 @@ export const MyFridge = () => {
         console.log(json.items)
         setMessage(json.message)
         setItems(json.items)
+        setDate(json.items.date)
       })
 
       .catch(err => {
@@ -81,13 +84,27 @@ export const MyFridge = () => {
           {/* {window.scrollTo({ top: 200, left: 0, behavior: 'smooth' })} */}
           {items.map((item) => {
             return (
-              <ul key={item._id}>{item.food} {item.number} {item.date}
-                <button
-                  className="remove-item-button"
-                  type="submit"
-                  onClick={handleRemoveItem}>
-                  <span role="img" aria-label="remove item">  ✖️</span>
-                </button></ul>
+              <ul key={item._id}>
+                {/* <div className="my-item-list"> */}
+                <div className="my-item-food">
+                  <p className="my-item">{item.food}</p>
+                </div>
+                <div className="my-item-number-date-button">
+                  <div className="my-item-number">
+                    <p className="my-item">{item.number}</p>
+                  </div>
+                  <div className="my-item-date">
+                    <p className="my-item"> {moment({ date }).format("Do-MM-YYYY")}</p>
+                  </div>
+                  < button
+                    className="remove-item-button"
+                    type="submit"
+                    onClick={handleRemoveItem} >
+                    <span role="img" aria-label="remove item">  ✖️</span>
+                  </button>
+                </div>
+                {/* </div> */}
+              </ul>
             )
           })}
 
@@ -98,7 +115,7 @@ export const MyFridge = () => {
           </button>
         </Link>
 
-      </div>
+      </div >
 
     </article >
   )

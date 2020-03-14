@@ -1,0 +1,11 @@
+.about-text-section {
+  display: flex;
+  margin: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  max-width: 500px;
+  text-align: center;
+  z-index: -1;;
+}

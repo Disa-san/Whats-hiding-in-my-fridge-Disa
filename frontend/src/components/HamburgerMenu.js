@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { LogoutUser } from './Logout'
+import { About } from './About'
 
 
 
@@ -58,10 +59,12 @@ export const Menu = ({ open }) => {
         <span role="img" aria-label="new item">🥝</span>
         New item
       </a>
-      <a href="/">
+      <a href="/about">
+
         <span role="img" aria-label="about us">✨</span>
         About
-        </a>
+
+      </a>
       <a href="/">
         <LogoutUser>
           <span role="img" aria-label="contact" >✖️</span>

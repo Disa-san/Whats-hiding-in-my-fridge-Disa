@@ -35,6 +35,7 @@ export const NewItem = () => {
         setDate("")
       })
 
+
       .catch(err => {
         console.log("error:", err)
         setErrorMessage(err.message)

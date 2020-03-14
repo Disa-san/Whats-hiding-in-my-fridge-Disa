@@ -7,6 +7,7 @@ import { MyFridge } from './components/MyFridge'
 import { NewItem } from './components/AddItem'
 import { Menu, Burger } from './components/HamburgerMenu'
 import { RemoveItem } from 'components/RemoveItem'
+import { About } from 'components/About'
 
 export const App = () => {
   const [open, setOpen] = React.useState(false);
@@ -14,6 +15,11 @@ export const App = () => {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path="/About" exact>
+          <Burger open={open} setOpen={setOpen} />
+          <Menu open={open} setOpen={setOpen} />
+          <About />
+        </Route>
         <Route path="/" exact>
           <section className="first-page">
             <div className="header">
@@ -22,28 +28,20 @@ export const App = () => {
             <div>
               <LoginUser />
               <NewUser />
-
             </div>
           </section>
         </Route>
-        {/* <Switch> */}
         <Route path="/items" exact>
-
           <MyFridge />
-          {/* <RemoveItem /> */}
-          {/* <LogoutUser /> */}
+
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
-
         </Route>
         <Route path="/items/newitem">
-
           <NewItem />
-
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </Route>
-        {/* </Switch> */}
       </Switch>
     </BrowserRouter >
   )
