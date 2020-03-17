@@ -1,37 +1,45 @@
-// import React, { useState } from 'react'
-// import { MyFridge } from './MyFridge'
+import React, { useState } from 'react'
+import { MyFridge } from './MyFridge'
 
-// const URL = 'http://localhost:8000/items/:id'
+const URL = 'http://localhost:8000/items/:id'
 
-// export const RemoveItem = () => {
+export const RemoveItem = () => {
 
-//   const [items, setItems] = useState([])
-//   const handleRemoveItem = () => {
+  const [errorMessage, setErrorMessage] = useState("")
 
-//     fetch(URL, {
-//       method: "DELETE",
-//     })
-//       // .then(res => res.json())
-//       // .then(result => {
-//       //   console.log("result", result)
+  const handleRemoveItem = () => {
+    const accessToken = window.localStorage.getItem('accessToken')
+    fetch('http://localhost:8000/items/:id', {
+      method: "DELETE",
+      headers: { "Authorization": accessToken }
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log("result", result)
 
-//       .then(json => {
-//         console.log(json.items)
-//         setItems(json.items)
-//       })
-//   }
+      })
+      .catch(err => {
+        setErrorMessage(err.message)
+      })
+  }
 
 
 
-//   return (
-//     <button
-//       className="remove-item-button"
-//       type="submit"
-//       onClick={handleRemoveItem}>
-//       <span role="img" aria-label="remove item">  ✖️</span>
-//     </button>
-//   )
-//   return (
-//     <ul key={item._id}>{item.food} <RemoveItem /></ul>
-//   )
-// }
+  return (
+    <button
+      className="remove-item-button"
+      type="submit"
+      onClick={handleRemoveItem}>
+      <span role="img" aria-label="remove item">  ✖️</span>
+    </button>
+    // <>
+
+    //   {errorMessage && <div><p>{errorMessage}</p></div>}
+    //   {message && <div><p>{message}</p></div>}
+
+    // </>
+  )
+  // return (
+  //   <ul key={item._id}>{item.food} <RemoveItem /></ul>
+  // )
+}

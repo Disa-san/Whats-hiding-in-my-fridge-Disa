@@ -14,7 +14,7 @@ export const MyFridge = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
   const [items, setItems] = useState([])
-  const [date, setDate] = useState([])
+  // const [date, setDate] = useState([])
   // const [number, setNumber] = useState([])
   // const [date, setDate] = useState([])
 
@@ -42,7 +42,6 @@ export const MyFridge = () => {
         console.log(json.items)
         setMessage(json.message)
         setItems(json.items)
-        setDate(json.items.date)
       })
 
       .catch(err => {
@@ -50,18 +49,46 @@ export const MyFridge = () => {
       })
   }
 
-  const handleRemoveItem = () => {
-    const accessToken = window.localStorage.getItem('accessToken')
-    fetch('http://localhost:8000/items/:id', {
-      method: "DELETE",
-      headers: { "Authorization": accessToken }
-    })
-      .then(res => res.json())
-      .then(result => {
-        console.log("result", result)
 
-      })
-  }
+
+
+
+  // const newDate = Item.parse(date)
+  // const newMoment = moment(newDate).format("Do-MM-YYY")
+
+  // const sortByDate = () => {
+  //   fetch(URL, {
+  //     method: "GET",
+  //   })
+  //     .then(json => {
+  //       setItems(json.items)
+  //     })
+  //     .then
+  //     (items.date.sort((a, b) =>
+  //       a.date > b.date)
+  //     )
+
+
+  //     )
+  // }
+
+  // const handleRemoveItem = () => {
+  //   const accessToken = window.localStorage.getItem('accessToken')
+  //   fetch('http://localhost:8000/items/:id', {
+  //     method: "DELETE",
+  //     headers: { "Authorization": accessToken }
+  //   })
+  //     .then(res => res.json())
+  //     .then(result => {
+  //       console.log("result", result)
+
+  //     })
+  //     .catch(err => {
+  //       setErrorMessage(err.message)
+  //     })
+  // }
+
+
 
   return (
 
@@ -79,13 +106,15 @@ export const MyFridge = () => {
             {errorMessage && <div className="error">{errorMessage}</div>}
           </>
         </div>
-        {/* <h4>{message}</h4> */}
+
+
         <div className="items-result">
-          {/* {window.scrollTo({ top: 200, left: 0, behavior: 'smooth' })} */}
           {items.map((item) => {
+
             return (
+
               <ul key={item._id}>
-                {/* <div className="my-item-list"> */}
+
                 <div className="my-item-food">
                   <p className="my-item">{item.food}</p>
                 </div>
@@ -94,21 +123,19 @@ export const MyFridge = () => {
                     <p className="my-item">{item.number}</p>
                   </div>
                   <div className="my-item-date">
-                    <p className="my-item"> {moment({ date }).format("Do-MM-YYYY")}</p>
-                  </div>
-                  < button
-                    className="remove-item-button"
-                    type="submit"
-                    onClick={handleRemoveItem} >
-                    <span role="img" aria-label="remove item">  ✖️</span>
-                  </button>
-                </div>
-                {/* </div> */}
-              </ul>
-            )
-          })}
+                    <p className="my-item"> {moment(item.date).format("Do-MM-YYYY")}</p>
 
+                    {/* {moment({ date }).format("Do-MM-YYYY")} */}
+                  </div>
+                  <RemoveItem />
+                </div>
+              </ul>
+
+            )
+
+          })}
         </div>
+
         <Link to="/items/newitem">
           <button className="new-item-button-link">
             NEW ITEM
@@ -119,5 +146,6 @@ export const MyFridge = () => {
 
     </article >
   )
+
 }
 

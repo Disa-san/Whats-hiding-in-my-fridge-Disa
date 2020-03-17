@@ -1,7 +1,7 @@
 import express from 'express'
 import bodyParser from 'body-parser'
 import cors from 'cors'
-import mongoose from 'mongoose'
+import mongoose, { MongooseDocument } from 'mongoose'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt-nodejs'
 // import { isBuffer } from 'util'
@@ -157,6 +157,7 @@ app.post('/items', async (req, res) => {
 
 app.delete('/items/:id', async (req, res) => {
   try {
+    const item = await Items.findOne({ accessToken: req.header('Authorization') })
     const removeItem = await Items.deleteOne({ _id: req.params.id })
     res.json(removeItem)
   } catch (error) {

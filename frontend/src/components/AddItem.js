@@ -70,11 +70,13 @@ export const NewItem = () => {
         {errorMessage && <div><p>{errorMessage}</p></div>}
         {message && <div><p>{message}</p></div>}
       </form>
-      <Link to='/items'>
-        <button className="home-button">
-          <span role="img" aria-label="take me back">  ⬅</span> BACK TO FRIDGE
+      <div className="home-button-div">
+        <Link to='/items'>
+          <button className="home-button">
+            <span role="img" aria-label="take me back">  ⬅</span> BACK TO FRIDGE
           </button>
-      </Link>
+        </Link>
+      </div>
     </div>
   )
 }

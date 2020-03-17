@@ -58,6 +58,7 @@ ul {
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
              -16px -16px 31px #ffffff;
+
 }
 
 .new-item-button-link {
@@ -77,6 +78,7 @@ ul {
 }
 
 .items-result {
+  /* display: none; */
   box-sizing: border-box;
   height: 320px;
   width: 300px;
@@ -87,16 +89,14 @@ ul {
   padding: 10px;
 }
 
+
+
 .my-item-list {
   display: flex;
   justify-content: flex-end;
   /* justify-content: space-between; */
 }
 
-
-.my-item{
-
-}
 
 .my-item-number {
   width: 30px; 
@@ -132,3 +132,10 @@ display: flex;
 justify-content: flex-end;
 /* align-items: flex-end; */
 }
+
+/* <p className="my-item"> {item.date.sort((a, b) => {
+  return (
+    a.date() > b.date())
+})
+
+</p> */
