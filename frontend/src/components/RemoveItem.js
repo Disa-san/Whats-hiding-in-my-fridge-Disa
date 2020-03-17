@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { MyFridge } from './MyFridge'
 
 const URL = 'http://localhost:8000/items/:id'
 
@@ -9,7 +8,8 @@ export const RemoveItem = () => {
 
   const handleRemoveItem = () => {
     const accessToken = window.localStorage.getItem('accessToken')
-    fetch('http://localhost:8000/items/:id', {
+    // const id = req.params.id
+    fetch(URL, {
       method: "DELETE",
       headers: { "Authorization": accessToken }
     })

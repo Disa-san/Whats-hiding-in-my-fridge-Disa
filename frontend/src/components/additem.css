@@ -17,6 +17,7 @@
   background: linear-gradient(145deg, #f7fffb, #d0dbd4);
   height: 300px;
   width: 90%;
+  max-width: 500px;
   padding-top: 10px;
   border-radius: 10px;
   margin-top: 150px;

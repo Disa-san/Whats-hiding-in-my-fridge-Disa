@@ -122,25 +122,20 @@ app.post('/sessions', async (req, res) => {
 app.get('/items', authenticateUser)
 app.get('/items', async (req, res) => {
   const items = await Items.find()
-  // if (items)
-  //   return (
-  res.json({ message: "These are the items in your frige:", items })
+  // const sortedItems = await Items.findOne().sort({ date: -1 })
+  if (Items)
+    return (
+      // const sortedItems = await Items.findOne().sort({ date: -1 })
+      res.json({ message: "These are the items in your frige:", items })
+    )
+  else {
+    res.status(404).json({ message: "no food added yet" })
+  }
 })
-// )
 
-// })
 
-// else {
-//   res.status(404).json({ message: "no food added yet" })
-// })
 
 app.post('/items', async (req, res) => {
-
-  // const { items } = req.params
-
-  // app.post('/items', async (req, res) => {
-  // try {
-  //   const { name, email, password } = req.body
   try {
     const { food, number, date } = req.body
     const user = await User.findOne({ accessToken: req.header('Authorization') })
@@ -157,7 +152,7 @@ app.post('/items', async (req, res) => {
 
 app.delete('/items/:id', async (req, res) => {
   try {
-    const item = await Items.findOne({ accessToken: req.header('Authorization') })
+    const item = await Items.id.findOne({ accessToken: req.header('Authorization') })
     const removeItem = await Items.deleteOne({ _id: req.params.id })
     res.json(removeItem)
   } catch (error) {
