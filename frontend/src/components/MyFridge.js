@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+// import { items } from 'reducers/items'
 import { Link } from 'react-router-dom'
 import moment from "moment"
-import { NewItem } from './AddItem'
+// import { NewItem } from './AddItem'
 import { RemoveItem } from './RemoveItem'
 import './myfridge.css'
 import './logout.css'
@@ -14,19 +15,21 @@ export const MyFridge = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
   const [items, setItems] = useState([])
+  const [showText, setShowText] = useState(false)
   // const [date, setDate] = useState([])
   // const [number, setNumber] = useState([])
   // const [date, setDate] = useState([])
-
+  const accessToken = window.localStorage.getItem('accessToken')
 
 
   // Getting accessToken from localStorage in web browser,
   // and sending it in to headers. 
 
-  const handleMyFridge = () => {
-    const accessToken = window.localStorage.getItem('accessToken')
-    // const { food } = items.food
+  // const handleMyFridge = () => {
 
+
+  // const { food } = items.food
+  useEffect(() => {
     setErrorMessage('')
     fetch(URL, {
       method: "GET",
@@ -42,12 +45,18 @@ export const MyFridge = () => {
         console.log(json.items)
         setMessage(json.message)
         setItems(json.items)
-      })
 
+        // items.sort((a, b) => (a.date > b.date) ? 1 : -1)
+      })
+      // .then(items => {
+      //   items.sort((a, b) => (a.date > b.date) ? 1 : -1)
+      //   console.log(items)
+      // })
       .catch(err => {
         setErrorMessage(err.message)
       })
-  }
+  }, [items])
+
 
 
 
@@ -72,44 +81,32 @@ export const MyFridge = () => {
   //     )
   // }
 
-  // const handleRemoveItem = () => {
-  //   const accessToken = window.localStorage.getItem('accessToken')
-  //   fetch('http://localhost:8000/items/:id', {
-  //     method: "DELETE",
-  //     headers: { "Authorization": accessToken }
-  //   })
-  //     .then(res => res.json())
-  //     .then(result => {
-  //       console.log("result", result)
-
-  //     })
-  //     .catch(err => {
-  //       setErrorMessage(err.message)
-  //     })
-  // }
-
-
-
   return (
 
     < article >
 
       <div className="buttons-loggedin">
         <div>
-          <button className="show-items-button"
-            type='submit'
-            onClick={handleMyFridge}
-          >
-            SHOW ME MY FRIDGE
-          </button>
+          {/* <button className="show-items-button"
+          type='submit'
+          // onClick={handleMyFridge}
+          // onClick={() => setShowText(!showText), handleMyFridge}
+          onClick={MyFridge}
+
+        >
+          SHOW ME MY FRIDGE
+          </button> */}
           <>
             {errorMessage && <div className="error">{errorMessage}</div>}
           </>
         </div>
 
-
+        {/* {showText && */}
         <div className="items-result">
+
           {items.map((item) => {
+            // { items.sort((item.date)) }
+            // { item.sort((a, b) => (a.date > b.date) ? 1 : -1) }
 
             return (
 
@@ -123,19 +120,21 @@ export const MyFridge = () => {
                     <p className="my-item">{item.number}</p>
                   </div>
                   <div className="my-item-date">
-                    <p className="my-item"> {moment(item.date).format("Do-MM-YYYY")}</p>
-
-                    {/* {moment({ date }).format("Do-MM-YYYY")} */}
+                    <p className="my-item"> {moment(item.date).format("Do-MM-YYYY")} </p>
                   </div>
                   <RemoveItem id={item._id} />
                 </div>
+
               </ul>
 
             )
 
-          })}
-        </div>
 
+          })
+          }
+
+        </div>
+        {/* } */}
         <Link to="/items/newitem">
           <button className="new-item-button-link">
             NEW ITEM

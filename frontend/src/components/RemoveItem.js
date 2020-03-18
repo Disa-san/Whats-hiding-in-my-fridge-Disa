@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
+import { items } from 'reducers/items'
+// import { useDispatch } from 'react-redux'
+import { Link, useHistory } from 'react-router-dom'
 
 const URL = 'http://localhost:8000/items/'
 
 export const RemoveItem = ({ id }) => {
+  // const dispatch = useDispatch()
+  const history = useHistory()
 
   const [errorMessage, setErrorMessage] = useState("")
 
@@ -16,7 +21,9 @@ export const RemoveItem = ({ id }) => {
       .then(res => res.json())
       .then(result => {
         console.log("result", result)
+        // dispatch(items.actions.removeItem(id))
 
+        history.push('/items')
       })
       .catch(err => {
         setErrorMessage(err.message)
@@ -32,6 +39,7 @@ export const RemoveItem = ({ id }) => {
       onClick={handleRemoveItem}>
       <span role="img" aria-label="remove item">  ✖️</span>
     </button>
+
     // <>
 
     //   {errorMessage && <div><p>{errorMessage}</p></div>}

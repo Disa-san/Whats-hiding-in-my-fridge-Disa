@@ -121,7 +121,7 @@ app.post('/sessions', async (req, res) => {
 //Applies the middleware-function above that checks authentication
 app.get('/items', authenticateUser)
 app.get('/items', async (req, res) => {
-  const items = await Items.find()
+  const items = await Items.find().sort({ date: +1 })
   // const sortedItems = await Items.findOne().sort({ date: -1 })
   if (Items)
     return (
