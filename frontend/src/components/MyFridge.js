@@ -16,9 +16,6 @@ export const MyFridge = () => {
   const [errorMessage, setErrorMessage] = useState("")
   const [items, setItems] = useState([])
   const [showText, setShowText] = useState(false)
-  // const [date, setDate] = useState([])
-  // const [number, setNumber] = useState([])
-  // const [date, setDate] = useState([])
   const accessToken = window.localStorage.getItem('accessToken')
 
 
@@ -55,7 +52,7 @@ export const MyFridge = () => {
       .catch(err => {
         setErrorMessage(err.message)
       })
-  }, [items])
+  }, [])
 
 
 
@@ -84,7 +81,7 @@ export const MyFridge = () => {
   return (
 
     < article >
-
+      <div className="header"><h1 className="header-text">These are the items in your fridge</h1></div>
       <div className="buttons-loggedin">
         <div>
           {/* <button className="show-items-button"
@@ -122,7 +119,10 @@ export const MyFridge = () => {
                   <div className="my-item-date">
                     <p className="my-item"> {moment(item.date).format("Do-MM-YYYY")} </p>
                   </div>
-                  <RemoveItem id={item._id} />
+                  <RemoveItem id={item._id} afterRemoval={() => {
+                    const filteredItems = items.filter(listedItem => item._id !== listedItem._id)
+                    setItems(filteredItems)
+                  }} />
                 </div>
 
               </ul>

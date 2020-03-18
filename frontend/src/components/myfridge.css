@@ -33,12 +33,19 @@ ul {
   
 }
 
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
 .buttons-loggedin {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  margin-top: 150px;
+  margin-top: 0;
   cursor: pointer;
 }
 
@@ -80,7 +87,7 @@ ul {
 .items-result {
   /* display: none; */
   box-sizing: border-box;
-  height: 320px;
+  height: 350px;
   width: 300px;
   overflow-y: auto;
   border-radius: 10px;

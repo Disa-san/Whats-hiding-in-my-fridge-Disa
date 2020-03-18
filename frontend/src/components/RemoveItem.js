@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom'
 
 const URL = 'http://localhost:8000/items/'
 
-export const RemoveItem = ({ id }) => {
+export const RemoveItem = ({ id, afterRemoval }) => {
   // const dispatch = useDispatch()
   const history = useHistory()
 
@@ -20,6 +20,7 @@ export const RemoveItem = ({ id }) => {
     })
       .then(res => res.json())
       .then(result => {
+        afterRemoval()
         console.log("result", result)
         // dispatch(items.actions.removeItem(id))
 

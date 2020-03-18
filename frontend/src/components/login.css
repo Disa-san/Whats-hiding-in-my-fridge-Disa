@@ -25,10 +25,11 @@
   margin: auto;
   border: none;
   width: 150px;
-  height: 25px;
+  height: 20px;
   font-size: 14px;
   margin: 5px;
   border-radius: 5px;
+  padding: 5px;
   /* background: linear-gradient(145deg, #f7fffb, #d0dbd4); */
   box-shadow:  16px 16px 31px #c4cfc8, 
              -16px -16px 31px #ffffff;
