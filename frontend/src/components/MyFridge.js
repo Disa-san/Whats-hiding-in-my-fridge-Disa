@@ -127,7 +127,7 @@ export const MyFridge = () => {
 
                     {/* {moment({ date }).format("Do-MM-YYYY")} */}
                   </div>
-                  <RemoveItem />
+                  <RemoveItem id={item._id} />
                 </div>
               </ul>
 

@@ -53,7 +53,7 @@ ul {
   font-weight: light;
   margin-left: 10px;
   margin-bottom: 20px;
-  /* position: absolute; */
+  border-radius: 10px;
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
              -16px -16px 31px #ffffff;
@@ -71,6 +71,7 @@ ul {
   font-weight: light;
   margin-top: 30px;
   margin-left: 10px;
+  border-radius: 10px;
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
              -16px -16px 31px #ffffff;

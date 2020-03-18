@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 
-const URL = 'http://localhost:8000/items/:id'
+const URL = 'http://localhost:8000/items/'
 
-export const RemoveItem = () => {
+export const RemoveItem = ({ id }) => {
 
   const [errorMessage, setErrorMessage] = useState("")
 
   const handleRemoveItem = () => {
     const accessToken = window.localStorage.getItem('accessToken')
     // const id = req.params.id
-    fetch(URL, {
+    fetch(URL + id, {
       method: "DELETE",
       headers: { "Authorization": accessToken }
     })

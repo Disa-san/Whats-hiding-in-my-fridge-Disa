@@ -152,11 +152,12 @@ app.post('/items', async (req, res) => {
 
 app.delete('/items/:id', async (req, res) => {
   try {
-    const item = await Items.id.findOne({ accessToken: req.header('Authorization') })
+    // const item = await Items.id.findOne({ accessToken: req.header('Authorization') })
     const removeItem = await Items.deleteOne({ _id: req.params.id })
     res.json(removeItem)
   } catch (error) {
     res.status(403).json({ message: "Item could not be deleted" })
+    console.log(error)
   }
 })
 
