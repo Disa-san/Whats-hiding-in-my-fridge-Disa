@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import './additem.css'
 
-const URL = 'http://localhost:8000/items'
+const URL = 'https://my-fridge.netlify.com/items'
 
 export const NewItem = () => {
   const [food, setFood] = useState("")

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import './myfridge.css'
 
-const URL = 'http://localhost:8000/items/'
+const URL = 'https://my-fridge.netlify.com/items/'
 
 export const RemoveItem = ({ id, afterRemoval }) => {
 

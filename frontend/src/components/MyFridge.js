@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react'
-// import { items } from 'reducers/items'
 import { Link } from 'react-router-dom'
 import moment from "moment"
-// import { NewItem } from './AddItem'
 import { RemoveItem } from './RemoveItem'
 import './myfridge.css'
 import './logout.css'
 
 
-const URL = 'http://localhost:8000/items'
+const URL = 'https://my-fridge.netlify.com/items'
 
 
 export const MyFridge = () => {
