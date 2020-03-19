@@ -58,17 +58,17 @@ export const Menu = ({ open }) => {
   }
   return (
     <StyledMenu open={open}>
-      <a href="https://whats-hiding-in-my-fridge.herokuapp.com/items/newItem">
+      <a href="https://my-fridge.netlify.com/items/newitem">
         <span role="img" aria-label="new item">🥝</span>
         New item
       </a>
-      <a href="https://whats-hiding-in-my-fridge.herokuapp.com/about">
+      <a href="https://my-fridge.netlify.com/items/about">
 
         <span role="img" aria-label="about us">✨</span>
         About
 
       </a>
-      <a href="https://whats-hiding-in-my-fridge.herokuapp.com/">
+      <a href="https://my-fridge.netlify.com/items/">
         <LogoutUser>
           <span role="img" aria-label="contact" >✨</span>
         </LogoutUser>
