@@ -12,7 +12,7 @@ import { About } from 'components/About'
 
 export const App = () => {
   const [open, setOpen] = React.useState(false);
-  // const node = React.useRef();
+  const node = React.useRef();
   return (
 
     <BrowserRouter>
