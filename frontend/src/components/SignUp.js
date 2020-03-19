@@ -3,7 +3,7 @@ import './signup.css'
 
 
 
-
+// const URL = 'https://auth-ninadisa.herokuapp.com/users'
 const URL = 'http://localhost:8000/users'
 
 export const NewUser = () => {

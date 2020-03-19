@@ -130,9 +130,9 @@ ul {
   
 } */
 
-/* .remove-item-button {
-  padding: 0;
-} */
+.remove-item-button {
+ cursor: pointer;
+}
 
 .my-item-number-date-button {
 display: flex;

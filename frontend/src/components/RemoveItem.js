@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
-import { items } from 'reducers/items'
-// import { useDispatch } from 'react-redux'
 import { Link, useHistory } from 'react-router-dom'
+import './myfridge.css'
 
 const URL = 'http://localhost:8000/items/'
 
 export const RemoveItem = ({ id, afterRemoval }) => {
-  // const dispatch = useDispatch()
-  const history = useHistory()
+
 
   const [errorMessage, setErrorMessage] = useState("")
 
@@ -22,9 +20,6 @@ export const RemoveItem = ({ id, afterRemoval }) => {
       .then(result => {
         afterRemoval()
         console.log("result", result)
-        // dispatch(items.actions.removeItem(id))
-
-        history.push('/items')
       })
       .catch(err => {
         setErrorMessage(err.message)
@@ -38,7 +33,7 @@ export const RemoveItem = ({ id, afterRemoval }) => {
       className="remove-item-button"
       type="submit"
       onClick={handleRemoveItem}>
-      <span role="img" aria-label="remove item">  ✖️</span>
+      <span role="img" > ✖️ </span>
     </button>
 
     // <>

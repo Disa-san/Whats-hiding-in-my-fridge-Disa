@@ -9,12 +9,13 @@ const StyledMenu = styled.nav`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   background: #e7f3eb;
   color: #8f8995;
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
   height: 100vh;
   text-align: left;
-  padding: 2rem;
+  /* padding: 2rem; */
   position: absolute;
   z-index: 1;
   top: 0;
@@ -24,13 +25,14 @@ const StyledMenu = styled.nav`
 
   @media (max-width: 576px) {
       width: 100%;
+      padding: 2rem; 
     }
 
   a {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color:#8f8995;
     text-transform: uppercase;
-    padding: 2rem 0;
+    padding: 2rem;
     font-weight: bold;
     letter-spacing: 0.5rem;
     text-decoration: none;
@@ -68,7 +70,7 @@ export const Menu = ({ open }) => {
       </a>
       <a href="/">
         <LogoutUser>
-          <span role="img" aria-label="contact" >✖️</span>
+          <span role="img" aria-label="contact" >✨</span>
         </LogoutUser>
       </a>
     </StyledMenu>
@@ -129,40 +131,4 @@ export const Burger = ({ open, setOpen }) => {
 }
 
 
-// const App = () => {
-//   const [open, setOpen] = React.useState(false);
-//   const node = React.useRef();
-//   return (
-//     <div>
-//       <div>
-//         <h1>Hello. This is burger menu tutorial</h1>
-//         <img src="https://image.flaticon.com/icons/svg/2016/2016012.svg" alt="burger icon" />
-//         <small>Icon made by <a href="https://www.freepik.com/home">Freepik</a> from <a href="https://www.flaticon.com">www.flaticon.com</a></small>
-//       </div>
-//       <div ref={node}>
 
-//       </div>
-//     </div>
-//   )
-// }
-
-
-// ReactDOM.render(<App />, document.getElementById('app'));
-
-// const useOnClickOutside = (ref, handler) => {
-//   React.useEffect(() => {
-//     const listener = event => {
-//       if (!ref.current || ref.current.contains(event.target)) {
-//         return;
-//       }
-//       handler(event);
-//     };
-//     document.addEventListener('mousedown', listener);
-
-//     return () => {
-//       document.removeEventListener('mousedown', listener);
-//     };
-//   },
-//     [ref, handler],
-//   );
-// };
