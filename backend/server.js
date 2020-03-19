@@ -4,7 +4,7 @@ import cors from 'cors'
 import mongoose, { MongooseDocument } from 'mongoose'
 import crypto from 'crypto'
 import bcrypt from 'bcrypt-nodejs'
-// import { isBuffer } from 'util'
+
 
 //connect to database:
 const mongoUrl = process.env.MONGO_URL || "mongodb://localhost/fridge"
@@ -38,10 +38,10 @@ const User = mongoose.model('User', {
 })
 
 const Items = mongoose.model('Items', {
-  user: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
+  // user: [{
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'User'
+  // }],
   food: {
     type: String,
     required: true,
@@ -71,10 +71,7 @@ const authenticateUser = async (req, res, next) => {
   }
 }
 
-// Defines the port the app will run on. Defaults to 8080, but can be 
-// overridden when starting the server. For example:
-//
-//   PORT=9000 npm start
+// Defines the port the app will run on. 
 const port = process.env.PORT || 8000
 const app = express()
 
@@ -82,7 +79,6 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json())
 
-// Start defining your routes here
 app.get('/', (req, res) => {
   res.send('Hello world')
 })
@@ -91,11 +87,9 @@ app.get('/', (req, res) => {
 app.post('/users', async (req, res) => {
   try {
     const { name, email, password } = req.body
-    //DO NOT STORE PLAIN TEXT PASSWORDS
     const user = new User({ name, email, password: bcrypt.hashSync(password) })
-    const saved = await
-      // const saved = await user.save() res.status(201).json(saved)
-      user.save()
+    // const saved = await
+    user.save()
     res.status(201).json({ id: user._id, accessToken: user.accessToken, message: "✨Created user ✨" })
   } catch (err) {
     res.status(400).json({ message: 'Could not create User', errors: err.errors })
@@ -117,15 +111,26 @@ app.post('/sessions', async (req, res) => {
   }
 })
 
+
+app.post('/items', authenticateUser, async (req, res) => {
+  try {
+    const { food, number, date } = req.body
+    const user = await User.findOne({ accessToken: req.header('Authorization') })
+    const item = new Items({ food, number, date, user })
+    const saved = await item.save(user)
+    res.status(201).json({ saved, message: "item added" })
+  } catch (err) {
+    res.status(403).json({ message: "Could not add item", errors: err.errors })
+  }
+})
+
 //Fride items endpoint
 //Applies the middleware-function above that checks authentication
 app.get('/items', authenticateUser)
 app.get('/items', async (req, res) => {
   const items = await Items.find().sort({ date: +1 })
-  // const sortedItems = await Items.findOne().sort({ date: -1 })
   if (Items)
     return (
-      // const sortedItems = await Items.findOne().sort({ date: -1 })
       res.json({ message: "These are the items in your frige:", items })
     )
   else {
@@ -133,26 +138,8 @@ app.get('/items', async (req, res) => {
   }
 })
 
-
-
-app.post('/items', async (req, res) => {
-  try {
-    const { food, number, date } = req.body
-    const user = await User.findOne({ accessToken: req.header('Authorization') })
-    const item = new Items({ food, number, user, date })
-
-    // const saved = await
-    const saved = await item.save()
-    // item.save()
-    res.status(201).json({ message: "item added" })
-  } catch (err) {
-    res.status(403).json({ message: "Could not add item", errors: err.errors })
-  }
-})
-
 app.delete('/items/:id', async (req, res) => {
   try {
-    // const item = await Items.id.findOne({ accessToken: req.header('Authorization') })
     const removeItem = await Items.deleteOne({ _id: req.params.id })
     res.json(removeItem)
   } catch (error) {

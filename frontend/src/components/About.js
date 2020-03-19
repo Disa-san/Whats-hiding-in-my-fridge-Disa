@@ -5,7 +5,7 @@ import './about.css'
 export const About = () => {
 
   return (
-    <div >
+    <div className="about">
       <div className="about-text-section">
         <h1>Keep track of the items in your fridge</h1>
         <p className="about-text">Register the food items in your fridge, with their expiry date, and have the app keep track of what is about to expire and what you can hang on to a while longer.

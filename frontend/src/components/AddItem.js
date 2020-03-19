@@ -11,7 +11,7 @@ export const NewItem = () => {
   const [errorMessage, setErrorMessage] = useState("")
   const [message, setMessage] = useState("")
 
-  // const accessToken = window.localStorage.getItem('accessToken')
+  const accessToken = window.localStorage.getItem('accessToken')
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -19,7 +19,7 @@ export const NewItem = () => {
     fetch(URL, {
       method: "POST",
       body: JSON.stringify({ food, number, date }),
-      headers: { "Content-Type": "application/json" }
+      headers: { "Content-Type": "application/json", "Authorization": accessToken }
     })
       .then(res => {
         if (!res.ok) {

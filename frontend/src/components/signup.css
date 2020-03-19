@@ -60,3 +60,7 @@
   box-shadow:  16px 16px 100px #c4cfc8, 
              /* -16px -16px 31px #ffffff; */
 }
+
+.login-message {
+  text-align: center;
+}

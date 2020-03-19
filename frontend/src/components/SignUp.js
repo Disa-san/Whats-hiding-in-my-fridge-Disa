@@ -66,8 +66,8 @@ export const NewUser = () => {
           </button>
         </div>
       </form>
-      {errorMessage && <div><p>{errorMessage}</p></div>}
-      {message && <div><p>{message}</p></div>}
+      {errorMessage && <div className="login-message"><p>{errorMessage}</p></div>}
+      {message && <div className="login-message"><p>{message}</p></div>}
     </div >
   )
 }

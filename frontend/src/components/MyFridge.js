@@ -55,29 +55,6 @@ export const MyFridge = () => {
   }, [])
 
 
-
-
-
-
-  // const newDate = Item.parse(date)
-  // const newMoment = moment(newDate).format("Do-MM-YYY")
-
-  // const sortByDate = () => {
-  //   fetch(URL, {
-  //     method: "GET",
-  //   })
-  //     .then(json => {
-  //       setItems(json.items)
-  //     })
-  //     .then
-  //     (items.date.sort((a, b) =>
-  //       a.date > b.date)
-  //     )
-
-
-  //     )
-  // }
-
   return (
 
     < article >
