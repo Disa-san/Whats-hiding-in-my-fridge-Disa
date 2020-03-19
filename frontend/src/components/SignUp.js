@@ -3,8 +3,8 @@ import './signup.css'
 
 
 
-const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/users'
-// const URL = 'http://localhost:8000/users'
+// const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/users'
+const URL = 'http://localhost:8000/users'
 
 export const NewUser = () => {
   const [name, setName] = useState("")

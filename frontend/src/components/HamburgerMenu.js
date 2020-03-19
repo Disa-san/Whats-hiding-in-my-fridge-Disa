@@ -50,24 +50,24 @@ const StyledMenu = styled.nav`
 
 
 
-export const Menu = ({ open }) => {
+export const Menu = ({ open, setOpen }) => {
   const onLoggedOut = event => {
     event.preventDefault()
     window.localStorage.removeItem('accessToken')
   }
   return (
     <StyledMenu open={open}>
-      <Link to='/items/newitem'>
-        <span role="img" aria-label="new item">🥝</span>
+      <Link to="/items/newitem" >
+        <span role="img" aria-label="new item" onClick={() => setOpen(!open)}>🥝</span>
         New item
         </Link>
-      <Link to='/about'>
+      <Link to="/about" onClick={() => setOpen(!open)}>
         <span role="img" aria-label="about us">✨</span>
         About
         </Link>
-      <Link to='/'>
+      <Link to="/" onClick={() => setOpen(!open)}>
         <LogoutUser>
-          <span role="img" aria-label="contact" >✨</span>
+          <span role="img" aria-label="contact" > ✖️ </span>
         </LogoutUser>
       </Link>
     </StyledMenu>
