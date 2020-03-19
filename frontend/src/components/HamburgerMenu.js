@@ -57,8 +57,8 @@ export const Menu = ({ open, setOpen }) => {
   }
   return (
     <StyledMenu open={open}>
-      <Link to="/items/newitem" >
-        <span role="img" aria-label="new item" onClick={() => setOpen(!open)}>🥝</span>
+      <Link to="/items/newitem" onClick={() => setOpen(!open)}>
+        <span role="img" aria-label="new item" >🥝</span>
         New item
         </Link>
       <Link to="/about" onClick={() => setOpen(!open)}>
