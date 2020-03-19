@@ -6,7 +6,7 @@ import './myfridge.css'
 import './logout.css'
 
 
-const URL = 'https://my-fridge.netlify.com/items'
+const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/items'
 
 
 export const MyFridge = () => {

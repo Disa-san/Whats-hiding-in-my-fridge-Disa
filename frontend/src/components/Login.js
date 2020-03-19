@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom'
 import './login.css'
 
 
-const URL = 'https://my-fridge.netlify.com/sessions'
+const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/sessions'
 
 export const LoginUser = props => {
   //useHistory this to route to "StartPage" when login succeeded. 
