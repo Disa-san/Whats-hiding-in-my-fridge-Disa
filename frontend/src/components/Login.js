@@ -4,9 +4,9 @@ import './login.css'
 
 
 const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/sessions'
+// const URL = 'http://localhost:8000/sessions'
 
 export const LoginUser = props => {
-  //useHistory this to route to "StartPage" when login succeeded. 
   const history = useHistory()
 
   const [email, setEmail] = useState("")
@@ -66,17 +66,3 @@ export const LoginUser = props => {
   )
 }
 
-
-// The following snippet accesses the current domain's local Storage object and adds a data item to it using Storage.setItem().
-// localStorage.setItem('accessToken');
-
-// The syntax for reading the localStorage item is as follows:
-// const accessToken = localStorage.getItem('accessToken');
-
-// The syntax for removing the localStorage item is as follows:
-// localStorage.removeItem('myCat');
-
-// The syntax for removing all the localStorage items is as follows:
-
-// // Clear all items
-// localStorage.clear();

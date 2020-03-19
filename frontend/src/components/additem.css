@@ -23,15 +23,6 @@
   margin-top: 150px;
 }
 
-/* .add-item-section {
-  background: linear-gradient(145deg, #f7fffb, #d0dbd4);
-  height: 300px;
-  width: 400px;
-  padding-top: 10px;
-  border-radius: 10px;
-  margin-top: 100px;
-} */
-
 .add-item-form {
   display: flex;
   justify-content: center;
@@ -39,7 +30,6 @@
   align-items: center;
   width: 300px;
   margin: 30px;
-
 }
 
 .new-food {
@@ -52,16 +42,8 @@
   margin: 5px;
   border-radius: 5px;
   padding: 10px;
- 
   box-shadow:  16px 16px 100px #c4cfc8;
-  
 }
-
-/* .new-item-page {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-} */
 
 .add-item-button-div {
   display: flex;

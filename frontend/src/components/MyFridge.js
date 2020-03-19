@@ -7,23 +7,15 @@ import './logout.css'
 
 
 const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/items'
+// const URL = 'http://localhost:8000/items'
 
 
 export const MyFridge = () => {
   const [message, setMessage] = useState('')
   const [errorMessage, setErrorMessage] = useState("")
   const [items, setItems] = useState([])
-  const [showText, setShowText] = useState(false)
   const accessToken = window.localStorage.getItem('accessToken')
 
-
-  // Getting accessToken from localStorage in web browser,
-  // and sending it in to headers. 
-
-  // const handleMyFridge = () => {
-
-
-  // const { food } = items.food
   useEffect(() => {
     setErrorMessage('')
     fetch(URL, {
@@ -40,13 +32,7 @@ export const MyFridge = () => {
         console.log(json.items)
         setMessage(json.message)
         setItems(json.items)
-
-        // items.sort((a, b) => (a.date > b.date) ? 1 : -1)
       })
-      // .then(items => {
-      //   items.sort((a, b) => (a.date > b.date) ? 1 : -1)
-      //   console.log(items)
-      // })
       .catch(err => {
         setErrorMessage(err.message)
       })
@@ -59,31 +45,14 @@ export const MyFridge = () => {
       <div className="header"><h1 className="header-text">These are the items in your fridge</h1></div>
       <div className="buttons-loggedin">
         <div>
-          {/* <button className="show-items-button"
-          type='submit'
-          // onClick={handleMyFridge}
-          // onClick={() => setShowText(!showText), handleMyFridge}
-          onClick={MyFridge}
-
-        >
-          SHOW ME MY FRIDGE
-          </button> */}
           <>
             {errorMessage && <div className="error">{errorMessage}</div>}
           </>
         </div>
-
-        {/* {showText && */}
         <div className="items-result">
-
           {items.map((item) => {
-            // { items.sort((item.date)) }
-            // { item.sort((a, b) => (a.date > b.date) ? 1 : -1) }
-
             return (
-
               <ul key={item._id}>
-
                 <div className="my-item-food">
                   <p className="my-item">{item.food}</p>
                 </div>
@@ -99,17 +68,11 @@ export const MyFridge = () => {
                     setItems(filteredItems)
                   }} />
                 </div>
-
               </ul>
-
             )
-
-
           })
           }
-
         </div>
-        {/* } */}
         <Link to="/items/newitem">
           <button className="new-item-button-link">
             NEW ITEM

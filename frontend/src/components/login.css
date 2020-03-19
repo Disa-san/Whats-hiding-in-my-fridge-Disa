@@ -8,13 +8,11 @@
   width: 100%;
   padding-top: 10px;
   border-radius: 10px;
-  
 }
 
 .login-form {
   display: flex;
   justify-content: center;
-  /* flex-direction: column; */
   width: 300px;
   margin: 30px;
   margin-top: 30px;
@@ -30,7 +28,6 @@
   margin: 5px;
   border-radius: 5px;
   padding: 5px;
-  /* background: linear-gradient(145deg, #f7fffb, #d0dbd4); */
   box-shadow:  16px 16px 31px #c4cfc8, 
              -16px -16px 31px #ffffff;
 }

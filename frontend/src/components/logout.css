@@ -13,29 +13,10 @@
   font-weight: light;
   margin-top: 30px;
   margin-left: 10px;
-  /* position: absolute; */
   background: #e7f3eb;
   box-shadow:  16px 16px 31px #c2ccc5, 
              -16px -16px 31px #ffffff;
 }
-
-/* .log-out-button {
-
-  cursor: pointer;
-  appearance: none;
-  background: black;
-  color:#8f8995;
-  border: none;
-  padding: 10px 30px;
-  font-weight: light;
-  margin-top: 30px;
-  margin-left: 10px;
-  position: absolute;
-  border-radius: 29px;
-  background: #c0c0c0;
-  box-shadow: inset 11px 11px 21px #a3a3a3, 
-              inset -11px -11px 21px #dddddd;
-} */
 
 .log-out-button-text {
   font-size: 25px;

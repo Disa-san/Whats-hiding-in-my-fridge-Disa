@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { LogoutUser } from './Logout'
-import { About } from './About'
+import { Link } from 'react-router-dom'
 
 
 
@@ -15,7 +15,6 @@ const StyledMenu = styled.nav`
   transform: ${({ open }) => open ? 'translateX(0)' : 'translateX(-100%)'};
   height: 100vh;
   text-align: left;
-  /* padding: 2rem; */
   position: absolute;
   z-index: 1;
   top: 0;
@@ -58,21 +57,19 @@ export const Menu = ({ open }) => {
   }
   return (
     <StyledMenu open={open}>
-      <a href="https://my-fridge.netlify.com/items/newitem">
+      <Link to='/items/newitem'>
         <span role="img" aria-label="new item">🥝</span>
         New item
-      </a>
-      <a href="https://my-fridge.netlify.com/items/about">
-
+        </Link>
+      <Link to='/about'>
         <span role="img" aria-label="about us">✨</span>
         About
-
-      </a>
-      <a href="https://my-fridge.netlify.com/items/">
+        </Link>
+      <Link to='/'>
         <LogoutUser>
           <span role="img" aria-label="contact" >✨</span>
         </LogoutUser>
-      </a>
+      </Link>
     </StyledMenu>
   )
 }

@@ -38,10 +38,10 @@ const User = mongoose.model('User', {
 })
 
 const Items = mongoose.model('Items', {
-  // user: [{
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User'
-  // }],
+  user: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   food: {
     type: String,
     required: true,
@@ -61,7 +61,7 @@ const Items = mongoose.model('Items', {
 //Middleware-function
 //The param next will let express know what to do when authorization has taken place
 const authenticateUser = async (req, res, next) => {
-  //Here the user is identified via the accessToken in the header's authorization-field.(test in postman, by adding the header field authorization)
+  //Here the user is identified via the accessToken in the header's authorization-field.
   const user = await User.findOne({ accessToken: req.header('Authorization') })
   if (user) {
     req.user = user
@@ -88,7 +88,6 @@ app.post('/users', async (req, res) => {
   try {
     const { name, email, password } = req.body
     const user = new User({ name, email, password: bcrypt.hashSync(password) })
-    // const saved = await
     user.save()
     res.status(201).json({ id: user._id, accessToken: user.accessToken, message: "✨Created user ✨" })
   } catch (err) {
@@ -106,12 +105,12 @@ app.post('/sessions', async (req, res) => {
     res.json({ userId: user._id, accessToken: user.accessToken })
   }
   else {
-    // res.json({ notFound: true, message: 'The user was not found or entered password is wrong' })
+    res.json({ notFound: true, message: 'The user was not found or entered password is wrong' })
     res.status(400).json({ notFound: true })
   }
 })
 
-
+//adding items to fridge
 app.post('/items', authenticateUser, async (req, res) => {
   try {
     const { food, number, date } = req.body
@@ -124,7 +123,7 @@ app.post('/items', authenticateUser, async (req, res) => {
   }
 })
 
-//Fride items endpoint
+//GET fridge items
 //Applies the middleware-function above that checks authentication
 app.get('/items', authenticateUser)
 app.get('/items', async (req, res) => {
@@ -138,6 +137,7 @@ app.get('/items', async (req, res) => {
   }
 })
 
+//delete item from fridge
 app.delete('/items/:id', async (req, res) => {
   try {
     const removeItem = await Items.deleteOne({ _id: req.params.id })

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import './additem.css'
 
 const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/items'
+// const URL = 'http://localhost:8000/users/items'
 
 export const NewItem = () => {
   const [food, setFood] = useState("")
@@ -34,13 +35,10 @@ export const NewItem = () => {
         setNumber("")
         setDate("")
       })
-
-
       .catch(err => {
         console.log("error:", err)
         setErrorMessage(err.message)
       })
-
   }
 
   return (
@@ -62,7 +60,6 @@ export const NewItem = () => {
           <button
             className="add-item-button"
             type="submit"
-            // disabled={food.length < 4 || number.length < 4 ? true : false}
             onClick={handleSubmit}>
             ADD ITEM
         </button>

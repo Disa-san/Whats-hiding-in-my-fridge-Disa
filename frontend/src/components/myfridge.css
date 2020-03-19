@@ -6,9 +6,6 @@ h3 {
   margin-left: 10px;
   color: #514e4c;
   font-weight: 500;
-  /* margin-top: 120px; */
-  /* box-shadow:  16px 16px 100px #c4cfc8, 
-  -16px -16px 100px #ffffff; */
 }
 
 h4 {
@@ -85,7 +82,6 @@ ul {
 }
 
 .items-result {
-  /* display: none; */
   box-sizing: border-box;
   height: 350px;
   width: 300px;
@@ -101,7 +97,6 @@ ul {
 .my-item-list {
   display: flex;
   justify-content: flex-end;
-  /* justify-content: space-between; */
 }
 
 
@@ -118,17 +113,7 @@ ul {
   width: 90px; 
   display: flex;
   flex-direction: column;
-  /* align-items: flex-end;
-  justify-content: flex-start; */
-  /* align-items: center;
-  justify-content: center; */
 }
-
-/* .my-item-date {
-  display: flex;
-  flex-direction: column;
-  
-} */
 
 .remove-item-button {
  cursor: pointer;
@@ -137,12 +122,4 @@ ul {
 .my-item-number-date-button {
 display: flex;
 justify-content: flex-end;
-/* align-items: flex-end; */
 }
-
-/* <p className="my-item"> {item.date.sort((a, b) => {
-  return (
-    a.date() > b.date())
-})
-
-</p> */
