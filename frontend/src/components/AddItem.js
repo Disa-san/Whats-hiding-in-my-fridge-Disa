@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import './additem.css'
 
 const URL = 'https://whats-hiding-in-my-fridge.herokuapp.com/items'
-// const URL = 'http://localhost:8000/users/items'
+// const URL = 'http://localhost:8000/items'
 
 export const NewItem = () => {
   const [food, setFood] = useState("")

@@ -127,7 +127,7 @@ app.post('/items', authenticateUser, async (req, res) => {
 //Applies the middleware-function above that checks authentication
 app.get('/items', authenticateUser)
 app.get('/items', async (req, res) => {
-  const items = await Items.find().sort({ date: +1 })
+  const items = await Items.find({ user: req.user }).sort({ date: +1 })
   if (Items)
     return (
       res.json({ message: "These are the items in your frige:", items })
