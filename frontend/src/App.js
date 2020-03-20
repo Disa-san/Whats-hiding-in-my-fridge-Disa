@@ -22,7 +22,7 @@ export const App = () => {
         <Route path="/" exact>
           <section className="first-page">
             <div className="header">
-              <h1><span className="header-text">What's hiding in your fridge?</span></h1>
+              <h1><span className="header-text">What's in your fridge?</span></h1>
             </div>
             <div>
               <LoginUser />
